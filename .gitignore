@@ -62,4 +62,5 @@ typings/
 
 # others
 package-lock.json
-public/
+public/css
+public/js
