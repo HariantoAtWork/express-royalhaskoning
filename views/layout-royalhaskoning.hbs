@@ -81,7 +81,7 @@
             return r
         }({
             1: [function (e, n, t) {
-                function r() {}
+                function r() { }
 
                 function o(e, n, t) {
                     return function () {
@@ -97,16 +97,16 @@
                     s = NREUM;
                 "undefined" == typeof window.newrelic && (newrelic = s);
                 var p = ["setPageViewName", "setCustomAttribute", "setErrorHandler", "finished",
-                        "addToTrace", "inlineHit", "addRelease"
-                    ],
+                    "addToTrace", "inlineHit", "addRelease"
+                ],
                     d = "api-",
                     l = d + "ixn-";
                 a(p, function (e, n) {
                     s[n] = o(d + n, !0, "api")
                 }), s.addPageAction = o(d + "addPageAction", !0), s.setCurrentRouteName = o(d +
                     "routeName", !0), n.exports = newrelic, s.interaction = function () {
-                    return (new r).get()
-                };
+                        return (new r).get()
+                    };
                 var m = r.prototype = {
                     createTracer: function (e, n) {
                         var t = {},
@@ -116,12 +116,12 @@
                             function () {
                                 if (f.emit((o ? "" : "no-") + "fn-start", [c.now(), r, o], t),
                                     o) try {
-                                    return n.apply(this, arguments)
-                                } catch (e) {
-                                    throw f.emit("fn-err", [arguments, this, e], t), e
-                                } finally {
-                                    f.emit("fn-end", [c.now()], t)
-                                }
+                                        return n.apply(this, arguments)
+                                    } catch (e) {
+                                        throw f.emit("fn-err", [arguments, this, e], t), e
+                                    } finally {
+                                        f.emit("fn-end", [c.now()], t)
+                                    }
                             }
                     }
                 };
@@ -129,8 +129,8 @@
                     function (e, n) {
                         m[n] = o(l + n)
                     }), newrelic.noticeError = function (e) {
-                    "string" == typeof e && (e = new Error(e)), i("err", [e, c.now()])
-                }
+                        "string" == typeof e && (e = new Error(e)), i("err", [e, c.now()])
+                    }
             }, {}],
             2: [function (e, n, t) {
                 function r(e, n) {
@@ -183,7 +183,7 @@
                 }
             }, {}],
             ee: [function (e, n, t) {
-                function r() {}
+                function r() { }
 
                 function o(e) {
                     function n(e) {
@@ -265,7 +265,7 @@
                             writable: !0,
                             enumerable: !1
                         }), r
-                    } catch (i) {}
+                    } catch (i) { }
                     return e[n] = r, r
                 }
                 var o = Object.prototype.hasOwnProperty;
@@ -356,7 +356,7 @@
                     };
                 e(1), l[m] ? (l[m]("DOMContentLoaded", i, !1), d[m]("load", r, !1)) : (l[v](
                     "onreadystatechange", o), d[v]("onload", r)), f("mark", ["firstbyte", u], null,
-                    "api");
+                        "api");
                 var E = 0,
                     O = e(5)
             }, {}]
@@ -5023,6 +5023,7 @@
             margin: 0
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="http://localhost:3000/css/app.css">
 </head>
 
 <body class="pg-gridpage
@@ -5035,10 +5036,10 @@
         (function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
                 'gtm.start':
-                new Date().getTime(), event: 'gtm.js'
+                    new Date().getTime(), event: 'gtm.js'
             }); var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-            '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-T6HG8S');
     </script>
     <!-- End Google Tag Manager -->
@@ -5258,7 +5259,7 @@
             </div>
             <div class="o-content-width">
                 <div class="hero__body">
-                    <h1 class="hero__title">Projects</h1>
+                    <h1 class="hero__title">{{title}}</h1>
                 </div><!-- /.body-box -->
             </div><!-- /.o-content-width -->
         </div><!-- /.hero -->
@@ -5272,38 +5273,9 @@
                             </ul>
                         </div> -->
             <div class="line o-browser-width">
-                <div class="rlUnit size1of1">
-                </div>
-                <div class="line o-content-width">
-                    <div class="rlUnit size2of3 mainCol">
 
+                {{{ body }}}
 
-
-                    </div>
-                    <div class="rlUnit size1of3 lastUnit sideCol">
-
-                    </div>
-                </div>
-                <div class="line o-browser-width">
-                    <div class="rlUnit size1of1">
-                    </div>
-                </div>
-                <div class="line o-content-width">
-                    <div class="rlUnit size2of3 mainCol">
-                    </div>
-                    <div class="rlUnit size1of3 lastUnit sideCol">
-                    </div>
-                </div>
-                <div class="line o-browser-width">
-                    <div class="rlUnit size1of1">
-                    </div>
-                </div>
-                <div class="line o-content-width">
-                    <div class="rlUnit size2of3 mainCol">
-                    </div>
-                    <div class="rlUnit size1of3 lastUnit sideCol">
-                    </div>
-                </div>
             </div>
         </div>
     </div>
