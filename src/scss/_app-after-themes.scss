@@ -82,19 +82,6 @@
 @import "8-compositions/compositions-vacancies";
 @import "8-compositions/compositions-vacancies-detail";
 
-.compositions-vacancies-detail {
-
-    &__main {
-        padding-left: 10px;
-        padding-right: 10px;
-        background-color: hotpink;
-    }
-
-    &__aside {}
-
-    &__footer {}
-}
-
 // Components
 // NOTE: this is an other type of "components": kind of plug-and-play functionality
 // this is also a different location: "components" vs "6-components"
