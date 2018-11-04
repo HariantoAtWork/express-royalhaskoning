@@ -1,11 +1,41 @@
 const
     timer = require('./gulp/lib/timer'),
     gulp = require('gulp'),
+    // export
+    sourcemaps = require('gulp-sourcemaps'),
+    sass = require('gulp-sass'),
     // server
     nodemon = require('gulp-nodemon'),
     livereload = require('gulp-livereload'),
     notifier = require('node-notifier');
 
+// Config
+sass.compiler = require('node-sass')
+
+// --- EXPORT
+/**
+ * Export: SCSS
+ */
+gulp.task('scss', function () {
+    return gulp.src('./src/scss/app.scss')
+        .pipe(sourcemaps.init())
+        .pipe(sass().on('error', sass.logError))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('./public/css'));
+});
+
+// --- WATCH
+/**
+ * Watch: SCSS
+ */
+gulp.task('watch:scss', function () {
+    gulp.watch(
+        [
+            './src/scss/*.scss', // files contain .scss
+            './src/scss/**/*.scss'
+        ], // sub directories with files contain .scss
+        ['scss']); // run parallel gulp tasks on change
+});
 
 // --- RELOAD
 /**
@@ -74,5 +104,12 @@ gulp.task('reload:server', function () {
 });
 
 
+
 // --- COMBINED TASKS
+gulp.task('export', ['scss']);
+gulp.task('watch', ['watch:scss']);
 gulp.task('reload', ['reload:server', 'reload:browser']);
+
+// --- DEFAULT
+// When you run only with: `gulp`
+gulp.task('default', ['watch', 'export']);
