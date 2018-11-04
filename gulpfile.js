@@ -7,6 +7,29 @@ const
     notifier = require('node-notifier');
 
 
+// --- RELOAD
+/**
+ * Reload: Livereload
+ */
+gulp.task('reload:browser', function () {
+    var options = {
+        // base will check changes on 'public' folder
+        base: "public"
+    };
+    livereload.listen(options);
+    gulp.watch([
+            'public/**/*.html',
+            'public/**/*.css',
+            'public/js/app.browserify.js',
+            'public/js/bower_components.min.js',
+        ])
+        .on('change', function (event) {
+            livereload.changed(event);
+            notifier.notify({
+                message: timer.lapse() + ': Browser refreshed'
+            });
+        });
+});
 /**
  * Reload: Node server
  */
@@ -49,3 +72,7 @@ gulp.task('reload:server', function () {
             }, 1000);
         });
 });
+
+
+// --- COMBINED TASKS
+gulp.task('reload', ['reload:server', 'reload:browser']);
