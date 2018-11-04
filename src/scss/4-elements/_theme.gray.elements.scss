@@ -1,0 +1,15 @@
+h2, .h2 {
+  &::after {
+    content: none;
+  }
+}
+
+a,
+p a {
+  color: $color-link;
+}
+
+.bulletedList li a:before {
+  color: $color-link;
+}
+

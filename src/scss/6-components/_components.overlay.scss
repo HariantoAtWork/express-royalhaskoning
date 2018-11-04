@@ -1,0 +1,32 @@
+.c-overlay {
+	// display: none;// no overlay on small screens
+
+	// @include mq-min($breakpoint-header) {
+		$opacity-duration: 0.3s;
+		display: block;
+		position: fixed;
+		z-index: $z-index-main-nav-overlay;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background: black;
+		transform: none;
+		// when set to collapsed, first opacity, then move
+		transition: opacity $opacity-duration ease-out, transform 0s $opacity-duration;
+
+		// overlay is implemented as toggle, so use those classes
+		&.collapsed {
+			opacity: 0;
+			transform: translateX(100%);// IE9
+			transform: translate3d(100%, 0, 0);
+		}
+
+		&.expanded {
+			opacity: 0.7;
+			// when set to expanded, first move, then opacity
+			transition: transform 0s, opacity $opacity-duration ease-out;
+		}
+
+	// }//mq-min
+}

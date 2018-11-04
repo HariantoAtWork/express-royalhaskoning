@@ -1,0 +1,10 @@
+.cms-centered,
+.cms-centered * {
+	text-align: center !important;// use important to overrule any inline styles
+}
+
+.cms-centered h2::after {
+	// dash underneath heading
+	margin-left: auto !important;// use important to overrule any inline styles
+	margin-right: auto !important;
+}

@@ -1,0 +1,102 @@
+.mediaBlock--full-width-bg {
+	@extend %clearfix;
+
+	padding: 2*$grid-padding-vert 0;
+	background: linear-gradient(to bottom, transparent 0, transparent 4*$grid-padding-vert, $color-backgroundblue 0);
+
+	&--cms-bg-graphic {
+		// background: url($footer-bg-image);
+		background-size: cover;
+
+		* {
+			color: $color-white;
+		}
+	}
+
+	.o-content-width {
+		background: transparent;
+	}
+
+	.mediaBox,
+	.bodyBox {
+		box-sizing: border-box;
+		float: none;
+		margin: 0;
+		padding: 0 $grid-padding-hor;
+		width: 100%;
+	}
+
+	.bodyBox {
+		overflow: visible;
+	}
+
+	@include mq-min(md) {
+		.mediaBox,
+		.bodyBox {
+			width: 50%;
+		}
+
+		.mediaBox {
+			float: left;
+		}
+
+		.bodyBox {
+			margin-left: 50%;
+			padding-top: 3*$grid-padding-vert;// push body down to fall within grey area
+		}
+	}
+
+
+	&--cms-bg-graphic {
+		.bodyBox {
+			padding-top: 0;
+		}
+	}
+
+
+	&.mediaBlock--cms-image-right {
+		.mediaBox {
+			float: right;
+		}
+
+		.bodyBox {
+			margin-left: 0;
+		}
+	}
+
+	&.mediaBlock--text-bg-color,
+	&.mediaBlock--text-bg-transparent {
+
+		@include mq-min($content-width + 2*$content-width-margin-hor) {
+			padding: $grid-padding-vert*2 $grid-padding-hor;
+		}
+
+		.bodyBox {
+			background-color: $color-theme;
+			padding: $grid-padding-vert/2 $grid-padding-hor;
+			
+			h3 {	
+				&::after {
+					@include heading-dash;
+					background-color: $color-white;
+				}
+			}
+		}
+	}
+	
+	&.mediaBlock--text-bg-transparent {
+		.bodyBox {
+			background-color: rgba($color-almostblack, 0.5);
+		}	
+	}
+
+	h3 {
+		margin-left: 0;
+		margin-right: 0;
+		font-size: $font-size-xl;
+
+		&::after {
+			@include heading-dash;
+		}
+	}
+}

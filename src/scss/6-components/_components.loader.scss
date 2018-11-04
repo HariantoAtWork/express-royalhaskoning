@@ -1,0 +1,61 @@
+@keyframes loader-animation {
+  0%,
+  50%,
+  100% {
+    box-shadow: 0 0;
+    height: 6em;
+    opacity: 0.8;
+  }
+  25% {
+    box-shadow: 0 -2em;
+    height: 8em;
+    opacity: 1;
+  }
+}
+
+.loader {
+
+  &,
+  &::before,
+  &::after {
+    position: absolute;
+    width: 1em;
+    height: 4em;
+    background: currentColor;
+    // we can't use shorthand for animation here, because we need to override delay separately
+    animation-name: loader-animation;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+
+  .is-loaded & {
+    display: none;
+  }
+
+  // opacity: 0.5;
+  top: 50%;
+  left: 50%;
+  margin: 0 auto;
+  color: $color-darkblue;
+  text-indent: -9999em;
+  font-size: 8px;
+  transform: translateZ(0);
+  animation-delay: -0.16s;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+  }
+  &::before {
+    left: -1.5em;
+    animation-delay: -0.32s;
+    color: $color-theme;
+  }
+  &::after {
+    left: 1.5em;
+    color: $color-lightblue;
+  }
+}

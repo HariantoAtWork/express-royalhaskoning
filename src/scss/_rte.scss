@@ -1,0 +1,158 @@
+.cUnit.rte {
+	overflow: visible;// to make sure comment boxes for facebook like are shown outside of cUnit 
+}
+
+.rte {
+	h1,
+	h2,
+	h3 {
+		// don't let headings wrap around images in rte 
+		clear: both;
+	}
+
+	h2 {
+		// "normal" h2's have font-size-xxl, but that looks way too big for rte
+		font-size: $font-size-l-px;
+		font-size: $font-size-l;
+		// text-transform: none;
+	}
+
+	.mainCol & h2:after {
+		display: none;// don't show heading-dash in rte in mainCol, only in sideCol
+	}
+
+	h3 {
+		// "normal" h3's have font-size-l, but that looks too big for rte
+		font-size: $font-size-m-px;
+		font-size: $font-size-m;
+	}
+
+	h4,
+	h5 {
+		font-size: inherit;
+		font-style: italic;
+		// .rte h4 inherits font-weight bold from h4 
+	}
+
+	h4 {
+		margin-top: 1em;
+	}
+
+	img + h4 {
+		// h4 after img is used as caption
+		margin: 0 0 1.5em;
+	}
+}
+
+.intro,
+.rte strong:first-child {
+	// the .rte strong:first-child selector is a bit of a hack. The editors at RHDHV use
+	// a big chunk of <strong> as the intro, instead of class="intro" (don't know if they have that option to begin with)
+	margin-bottom: 1em;
+	font-family: $font-family-brand;
+	font-size: $font-size-m-px;
+	font-size: $font-size-m;
+	font-weight: normal;
+}
+
+h1 + .rte .intro {
+	margin-top: -1rem;
+}
+
+.rte img {
+	max-width: 100%;
+	height: auto !important;// sitecore adds height attribute to image, so add important to overrule that 
+}
+
+@include mq-min($breakpoint-main-layout) {
+	// in sideCol on large screens, make p wrap around floating images
+	//(in mainCol, we don't want this, since the next paragraph may need to flow around the image)
+	.sideCol .rte p {
+		overflow: hidden;
+	}
+}
+
+.rte {
+		p img {
+		float: left;
+		margin-right: 0.5em;
+	}
+
+	&.right p img {
+		float: right;
+		margin: 0 0 0.5em;
+		// margin-right: 0;
+		// margin-left: 0.5em;
+
+	}
+}
+
+
+// in 2016 redesign, the width of the maincol has changed. many images where uploaded in the
+// exact width of the old mainCol (619px). So we now set the images to full-width by default,
+// and we'll use js to change that for smaller images.
+.rte.js-rte--article img {
+	float: none;
+	width: 100% !important;// important necessary to overrule inline style
+
+	&:last-child {
+		margin-bottom: 0 !important;// important necessary to overrule inline style
+	}
+
+	&.floating-img {
+		float: left;
+		margin-right: 0.7em;
+		width: auto !important;
+	}
+}
+
+.rte p:last-child {
+	margin-bottom: 0;
+}
+
+.textBlock ul,
+.textBlock ol,
+.rte ul,
+.rte ol {
+	margin: 0 0 1em;
+}
+
+.textBlock ul li,
+.rte ul li {
+	position: relative;
+	margin-bottom: 0.6em;
+	padding-left: 0.9em;
+	font-size: inherit !important;
+	//background: transparent url(/images/rhdhv-icons.png) 0 -80px no-repeat;
+
+	span {
+		font-size: inherit !important;
+	}
+}
+
+.textBlock ul li:before,
+.rte ul li:before {
+	position: absolute;
+	content: "";
+	top: 0.8em;
+	left: 0;
+	width: 5px;
+	height: 5px;
+	background: $color-theme;
+}
+
+.textBlock ol li,
+.rte ol {
+	padding-left:2em;
+	list-style-type: decimal;
+}
+
+.rte ol > li {
+	padding-left: 0.6em;
+}
+
+.rte hr {
+	border: none;
+	border-top: 1px solid #bfd5df;
+}
+

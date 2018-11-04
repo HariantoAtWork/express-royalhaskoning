@@ -1,0 +1,160 @@
+//-- Start lists --
+
+	.link-list {
+
+		li {
+			margin-bottom: 0.5em;
+		}
+	}
+
+	.bulletedList {
+		margin-bottom: 1em;
+		font-size: 18px;
+		font-size: 1.8rem;
+		font-family: 'TheSans', verdana, helvetica, arial, sans-serif;
+
+		li {
+			// @extend %icon-without-span;
+			margin-bottom: 0.4em;
+			
+			
+			a {
+				position: relative;
+				
+				&:before {
+					@include icon-font-styles;
+					position: absolute;
+					content: "5";//same as icon-right
+					top: 0.25em;
+					left: -0.4em;
+					color: $color-mediumblue;
+				}
+			}
+		}
+
+
+		&.newsList {
+			margin-bottom: 1em;
+			
+			li:before {
+				top: 0.1em;
+			}
+		}
+
+		a {
+			display: inline-block;
+			padding-left: 1.2em;// same as .bulletedList a .fontIcon width + margin-right 
+			padding-left: 0.8em;
+		}
+
+		&.newsList a {
+			display: block;
+		}
+
+		a:hover,
+		a:focus {
+			text-decoration: underline;
+		}
+
+		.ie7 & a {
+			display: inline;
+			zoom: 1;
+		}
+	}
+
+	.bulletedList a .fontIcon {
+		margin-left: -1.2em;// same as margin-right + width 
+		margin-right: 0.2em;
+		//display: inline-block;
+		display: none;// we've replaced this with border-left 
+		width: 1em;
+	}
+
+	.bulletedList .icon-more {
+		color: $color-textlightgrey;
+	}
+
+	.bulletedList a .fontIcon,
+	.bulletedList .date ,
+	.bulletedList .title {
+		vertical-align: top;
+		line-height: 1.5;
+	}
+
+	.bulletedList a .icon-rss {
+		margin-right: 0.4em;
+		border-radius: 3px;
+		padding: 3px;
+		background: $color-textverylightgrey;
+		color: #fff;
+		font-size: 1.2rem;
+		line-height: 1;
+		vertical-align: middle;
+	}
+
+	.bulletedList a:hover .fontIcon,
+	.bulletedList a:hover .date {
+		text-decoration: none;
+	}
+
+	.bulletedList a:hover .title {
+		text-decoration: underline;
+	}
+
+	.forwardList li {
+		margin: 1em 0 0;
+		line-height: 1.5em;
+	}
+
+	.forwardList a {
+		color: $color-mediumblue;
+	}
+
+	.forwardList a:hover,
+	.forwardList a:focus {
+		color: $color-darkblue;
+	}
+
+
+	.newsList li {
+		overflow: hidden;
+	}
+
+	.newsList .fontIcon {
+		display: block;
+		float: left;
+	}
+
+	.newsList .date {
+		display: block;
+		float: left;
+		clear: left;
+		width: 120px;
+		width: 12rem;
+	}
+
+	.bulletedList .title {
+		display: block;
+		overflow: hidden;
+	}
+
+	//-- Start filer-list-block
+
+		.filter-list-block {
+			padding: 0.5em 0 0;
+			text-align: center;
+		}
+
+		.filter-list__item {
+			a {
+				display: inline-block;
+				padding: 0.3em 0.6em;
+				background: $color-theme;
+				color: $color-white;
+			}
+		}
+
+
+	//-- End filer-list-block
+
+//-- End lists links --

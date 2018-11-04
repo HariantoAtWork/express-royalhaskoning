@@ -1,0 +1,526 @@
+/*-- Start original stylesheet --*/
+
+    /* adjusted styles are some 150 lines down */
+
+    a {
+        color: #05526B;
+        /*font-size: 10px;*/
+        font-weight: bold;
+        text-decoration: none;
+    }
+    body, table {
+        color: #000000;
+        font-family: Verdana,Arial,Sans-Serif;
+        /*font-size: 11px;*/
+        margin: 0;
+        padding: 0;
+    }
+    .body_width {
+        /*width: 599px;*/
+    }
+    .button {
+        background: url("../style/royalhaskoning/images/bullet_gt_link.gif") no-repeat scroll 0 0 transparent;
+        border: 0 none;
+        color: #05526B;
+        cursor: pointer;
+        /*font-family: Verdana,Arial,Sans-Serif;*/
+        /*font-size: 11px;*/
+        font-weight: bold;
+        padding-left: 15px;
+        text-align: left;
+    }
+    .button_terug {
+        background: url("../style/royalhaskoning/images/bullet_gt_link_terug.gif") no-repeat scroll 0 0 transparent;
+        border: 0 none;
+        color: #05526B;
+        cursor: pointer;
+        font-family: Verdana,Arial,Sans-Serif;
+        /*font-size: 11px;*/
+        font-weight: bold;
+        padding-left: 15px;
+    }
+    .button_width {
+        width: 50px;
+    }
+    .font_vac {
+        font-weight: bold;
+    }
+    .hidden {
+        display: none;
+    }
+    .hoogte_mot {
+        height: 100px;
+    }
+    .knop_buiten {
+        width: 110px;
+    }
+    .knop_midden {
+        text-align: center;
+    }
+    .kop_vac {
+        color: #b8c300;/* green */
+        font-family: 'TheSans-Semibold', verdana, helvetica, arial, sans-serif;
+        font-size: 20px;
+        font-size: 2.0rem;
+        text-transform: uppercase;
+    }
+    .lege_regel {
+        height: 13px;
+    }
+    .lijn {
+        border-top-color: #CBDDE1;
+        border-top-style: solid;
+        height: 1px;
+    }
+    .padding_bottom {
+        padding: 0 0 10px;
+    }
+    .padding_links {
+        padding-left: 30px;
+    }
+    .sectie_bgcolor {
+        background: none repeat scroll 0 0 #E5EDF0;
+        border-bottom: 1px solid #CBDDE1;
+        /*width: 599px;*/
+    }
+    .sectie_padding {
+        padding-left: 10px;
+    }
+    td {
+        font-family: Verdana,Arial,Sans-Serif;
+        /*font-size: 10px;*/
+    }
+    .tekst_klein {
+        font-size: 9px;
+        font-style: italic;
+        padding-left: 40px;
+    }
+    .titel {
+        background-color: #CCDCE1;
+        color: #004F68;
+        font-weight: bold;
+        height: 17px;
+        text-transform: uppercase;
+    }
+    .titel2 {
+        color: #004F68;
+        font-weight: bold;
+        height: 17px;
+    }
+    .titel3 {
+        background: none repeat scroll 0 0 #F5F5F6;
+        color: #004F68;
+        font-weight: bold;
+        height: 17px;
+        /*width: 599px;*/
+    }
+    .titel_top_5 {
+        background-color: #CCDCE1;
+        color: #004F68;
+        /*font-size: 11px;*/
+        font-weight: bold;
+        height: 20px;
+        padding-left: 10px;
+        width: 180px;
+    }
+    .uitlijning_links {
+        width: 300px;
+    }
+    .uitlijning_links_1 {
+        width: 110px;
+    }
+    .uitlijning_rechts_1 {
+        width: 240px;
+    }
+    .width_links_4 {
+        padding-left: 10px;
+        width: 190px;
+    }
+    .width_td_1 {
+        padding-left: 10px;
+        width: 150px;
+    }
+    .width_td_2 {
+        padding-left: 10px;
+        width: 190px;
+    }
+    .width_td_3 {
+        padding-left: 10px;
+        width: 186px;
+    }
+    .width_td_rechts_1 {
+        font-family: Verdana,Arial,Sans-Serif;
+        /*font-size: 11px;*/
+        margin-bottom: 4px;
+        margin-left: 40px;
+        width: 200px;
+    }
+
+/*-- End original stylesheet --*/
+
+
+
+/*-- Start overruling original stylesheet --*/
+
+
+
+
+/* TheSans plain */
+@font-face {
+    font-family: 'TheSans';
+    src: url(/style/royalhaskoning/css/fonts/TheSans_B2_5_.eot);
+    src: url(/style/royalhaskoning/css/fonts/TheSans_B2_5_.woff) format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* TheSans plain italic */
+@font-face {
+    font-family: 'TheSans';
+    src: url(/style/royalhaskoning/css/fonts/TheSans_B2_5_italic.eot);
+    src: url(/style/royalhaskoning/css/fonts/TheSans_B2_5_italic.woff) format("woff");
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* TheSans bold */
+@font-face {
+    font-family: 'TheSans';
+    src: url(/style/royalhaskoning/css/fonts/TheSans_B2_7_.eot);
+    src: url(/style/royalhaskoning/css/fonts/TheSans_B2_7_.woff) format("woff");
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* TheSans bold italic */
+@font-face {
+    font-family: 'TheSans';
+    src: url(/style/royalhaskoning/css/fonts/TheSans_B2_7_italic.eot);
+    src: url(/style/royalhaskoning/css/fonts/TheSans_B2_7_italic.woff) format("woff");
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* TheSans semi bold */
+@font-face {
+    font-family: 'TheSans-SemiBold';
+    src: url(/style/royalhaskoning/css/fonts/TheSans_B2_6_.eot);
+    src: url(/style/royalhaskoning/css/fonts/TheSans_B2_6_.woff) format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* TheSans semi bold italic */
+@font-face {
+    font-family: 'TheSans-SemiBold';
+    src: url(/style/royalhaskoning/css/fonts/TheSans_B2_6_italic.eot);
+    src: url(/style/royalhaskoning/css/fonts/TheSans_B2_6_italic.woff) format("woff");
+    font-weight: normal;
+    font-style: italic;
+}
+
+
+
+
+
+
+            /*-- Start temp local font files --*/
+
+
+
+
+                /* TheSans plain */
+                @font-face {
+                    font-family: 'TheSans';
+                    src: url(/fonts/TheSans_B2_5_.eot);
+                    src: url(/fonts/TheSans_B2_5_.woff) format("woff");
+                    font-weight: normal;
+                    font-style: normal;
+                }
+
+                /* TheSans plain italic */
+                @font-face {
+                    font-family: 'TheSans';
+                    src: url(/fonts/TheSans_B2_5_italic.eot);
+                    src: url(/fonts/TheSans_B2_5_italic.woff) format("woff");
+                    font-weight: normal;
+                    font-style: italic;
+                }
+
+                /* TheSans bold */
+                @font-face {
+                    font-family: 'TheSans';
+                    src: url(/fonts/TheSans_B2_7_.eot);
+                    src: url(/fonts/TheSans_B2_7_.woff) format("woff");
+                    font-weight: bold;
+                    font-style: normal;
+                }
+
+                /* TheSans bold italic */
+                @font-face {
+                    font-family: 'TheSans';
+                    src: url(/fonts/TheSans_B2_7_italic.eot);
+                    src: url(/fonts/TheSans_B2_7_italic.woff) format("woff");
+                    font-weight: bold;
+                    font-style: italic;
+                }
+
+                /* TheSans semi bold */
+                @font-face {
+                    font-family: 'TheSans-SemiBold';
+                    src: url(/fonts/TheSans_B2_6_.eot);
+                    src: url(/fonts/TheSans_B2_6_.woff) format("woff");
+                    font-weight: normal;
+                    font-style: normal;
+                }
+
+                /* TheSans semi bold italic */
+                @font-face {
+                    font-family: 'TheSans-SemiBold';
+                    src: url(/fonts/TheSans_B2_6_italic.eot);
+                    src: url(/fonts/TheSans_B2_6_italic.woff) format("woff");
+                    font-weight: normal;
+                    font-style: italic;
+                }
+
+
+            /*-- End temp local font files --*/
+
+
+
+
+html {
+    font-size: 62.5%;/* 10px will be value for rems */
+}
+
+body {
+    padding: 0 4rem;/* same as cUnit margin + padding */
+    width: auto !important;
+}
+
+body, table, td {
+    color: #4b4b4b;
+    font-family: TheSans, Verdana, helvetica, Arial, Sans-Serif;
+    font-size: 18px;
+    font-size: 1.8rem;
+    line-height: 1.75;
+}
+
+td {
+    /*vertical-align: top;*/
+}
+
+td.sectie_padding {
+    min-width: 33%;
+}
+
+td[colspan="4"] {
+    padding-left: 10px;
+    padding-left: 1rem;
+}
+
+td a {
+    font-weight: normal;
+}
+
+td a:hover,
+td a:focus {
+    text-decoration: underline;
+}
+
+select,
+option {
+    font: inherit;
+}
+
+table {
+    width: 100% !important;
+}
+
+.sectie_bgcolor {
+    border: none;
+} 
+
+.titel,
+.titel3 {
+    /* h2 */
+    background: none;
+    font-family: 'TheSans-Semibold', verdana, helvetica, arial, sans-serif;
+    color: #0086a8;/* mediumblue */;
+    color: #b8c300;/* green */;
+    line-height: 1.2;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.titel {
+    padding: 36px 10px 10px;
+    padding: 3.6rem 1rem 1rem;
+    font-size: 26px;
+    font-size: 2.6rem;
+    color: #00567d;
+}
+
+.titel::after {
+    content: "";
+    display: block;
+    margin: 0.5em 0;
+    width: 20px;
+    width: 2.0rem;
+    height: 4px;
+    height: 0.4rem;
+    background: #b8c300;
+
+}
+
+.titel3 {
+    padding-top: 1em;
+    padding-bottom: 0.3em;
+    font-size: 20px;
+    font-size: 2.0rem;
+}
+
+.titel3 b {
+    font-weight: normal;
+}
+
+.width_td_rechts_1 {
+    color: #4b4b4b;
+    font-family: TheSans, Verdana, helvetica, Arial, Sans-Serif;
+}
+
+.lijn {
+    border: none;
+    border-top: 1px solid #CBDDE1;
+    height: 0;
+}
+
+/*-- Start buttons and cta (call to action) --*/
+
+    input.button {
+        display: inline-block;
+        margin: 1em 0;
+        padding: 0.5em 2em;
+        background: #b8c300;/* green */
+        color: #fff;
+        font-family: 'TheSans', verdana, helvetica, arial, sans-serif;
+        font-size: inherit;
+        line-height: inherit;
+    }
+
+    a.button,
+    input.button[name="Print"],
+    input.button[name="Annuleer"] {
+        margin: 1em 0;
+        padding-left: 0;
+        background: none;
+        color: #05526b;
+    }
+
+    a.button:hover,
+    a.button:focus,
+    input.button[name="Print"]:hover,
+    input.button[name="Print"]:focus,
+    input.button[name="Annuleer"]:hover,
+    input.button[name="Annuleer"]:focus {
+        background: none;
+        color: #05526b;
+        text-decoration: underline;
+    }
+
+    .ie7 input.button {
+        display: inline;
+        zoom: 1;
+    }
+
+    input.button:active {
+        box-shadow: inset 2px 2px 4px rgba(0,0,0,0.25);
+    }
+
+
+    input.button:hover,
+    input.button:focus {
+        color: #fff;
+        background: #9ea700;
+    }
+
+
+
+    .button[name="Wissen"],
+    .button[name="Wissen"]:hover,
+    .button[name="Wissen"]:focus {
+        /* show as link */
+        background: none;
+        color: #004f68;
+        font-weight: normal;
+        text-decoration: underline;
+    }
+
+    .button[name="Wissen"]:hover,
+    .button[name="Wissen"]:focus {
+        text-decoration: none;
+    }
+
+
+/*-- End buttons and cta (call to action) --*/
+
+
+.tekst_klein {
+    padding-left: 40px;
+    font-size: 12px;
+    font-size: 1.2rem;
+    line-height: 1.4;
+    font-style: italic;
+    color: #999;
+}
+
+
+form .width_td_1,
+form .width_td_2,
+form .width_td_3 {
+    /* labels */
+    width: 220px;
+
+}
+
+input.width_td_rechts_1,
+select.width_td_rechts_1,
+textarea.width_td_rechts_1 {
+    margin-left: 0;
+    width: 15em;
+}
+
+td.width_td_1 + .tekst_klein {
+    padding-left: 0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+select,
+textarea {
+    box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box; 
+    border: 1px solid #ccc;
+    padding: 0.3em;
+    width: 15em;
+    color: #4b4b4b;/* textgrey */
+    font-size: inherit;
+}
+
+
+input[type="file"] {
+    font: inherit;
+}
+
+select.width_td_rechts_1 {
+    width: 15em;
+}
+
+
+.width_td_1 {
+    width: 200px;
+}

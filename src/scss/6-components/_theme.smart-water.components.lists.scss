@@ -1,0 +1,22 @@
+//-- Start filter-list-block
+
+	.filter-list-block {
+		background: $color-theme-lightgrey;
+
+		&::after {
+			display: block;
+			content: '';
+			width: 100%;
+			height: 3em;
+			background: linear-gradient(0.7deg, $color-white 0, $color-white 35%, $color-theme-lightgrey 38%);
+		}
+	}
+
+	.filter-list__item {
+		a {
+			background: $color-theme-mediumgrey;
+		}
+	}
+
+
+//-- End filter-list-block

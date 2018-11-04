@@ -1,0 +1,276 @@
+/*
+ * global-layout.css
+ *
+ * Styles for the main layout and grid only
+ *
+ */
+//-- Start layout and grid stuff --
+
+	.o-content-width {
+		margin: 0 $content-width-margin-hor;
+		max-width: $content-width;
+		padding: 0;
+		
+		@include mq-min($content-width + 2*$content-width-margin-hor) {
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		&.narrow {
+			max-width: $content-width-narrow;
+		}
+	}
+
+	.main .o-content-width {
+		background: $color-white;
+	}
+
+	// we want the first o-content-width line to have a padding-top
+	.line.o-content-width {
+		padding-top: $main-padding-top;
+
+		// undo for lines that aren't the first o-content-width
+		& ~ .line.o-content-width {
+			padding-top: 0;
+		} 
+	}
+	
+
+	// logo fix  //?rd2016: why is this a logo fix? is this still necessary?
+	.main {
+		position: relative;
+		padding: 0;
+	}
+
+	//-- Start small screens --
+		
+		@media screen and (max-width: $sm-max) {
+			.wrapper,
+			.o-content-width {
+				padding: 0;
+			}
+	
+		}
+	
+	//-- End small screens --
+		
+
+	// layout units for grids 
+		.line:after {
+			clear: both;
+			content: ".";
+			display: block;
+			height: 0;
+			visibility: hidden;
+		}
+
+		.ie7 .line {
+			// ie7 doesn't understand :after; make line float so it wraps around the floats it contains 
+			clear: both;
+			float: left;
+			width: 100%;
+		}
+
+		.lUnit {
+			/* layoutUnit; use for horizontal positioning only.
+			 * DO NOT put margins, borders and paddings here,
+			 * but in its child cUnits instead
+			*/
+			float: left;
+		}
+
+		.rlUnit {
+			// responsiveLayoutUnit; has same function as lUnit, but is also responsive 
+			float: left;
+		}
+
+		// lastUnit is necessary to make sure line wraps around floating content
+		.lastUnit {
+			overflow: hidden;// wraps elm around floating children 
+			zoom: 1;
+			display: table-cell;
+		}
+
+		.lastUnit:first-child {
+			display: block;
+		}
+
+        .lastUnit+.rlUnit {
+            clear: left;
+        }
+
+		.lastUnit:after {
+			clear: both;
+			display: block;
+			visibility: hidden;
+			overflow: hidden;
+			height: 0 !important;
+			line-height: 0;
+			font-size: xx-large;
+			content: " . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ";
+		}
+
+		.firstUnit {
+			// this has to be used occasionally when lastUnits are followed by divs with display: none 
+			clear: left;
+		}
+
+		.size1of1 {width: 100%; }
+		.size1of2,
+		.size2of4,
+		.size3of6 {width: 50%; }
+		.size1of3,
+		.size2of6 {width: 33.3333%; }
+		.size1of4 {width: 25%; }
+		.size1of5 {width: 20%; }
+		.size1of6 {width: 16.6666%; }
+		.size2of5 {width: 40%; }
+		.size3of5 {width: 60%; }
+		.size2of3,
+		.size4of6 {width: 66.6666%; }
+		.size3of4 {width: 75%; }
+		.size4of5 {width: 80%; }
+		.size5of6 {width: 83.3333%; }
+
+		// ie7 doesn't understand more than 1 digit, and has rounding issues (for example when dividing uneven px into 2x50%) 
+		.ie7 .size1of2,
+		.ie7 .size2of4,
+		.ie7 .size3of6 {width: 49.9%; }
+		.ie7 .size1of3,
+		.ie7 .size2of6 {width: 33.3%; }// ie7 doens't understand more digits than 1
+		.ie7 .size1of4 {width: 24.9%; }
+		.ie7 .size1of6 {width: 16.6%; }
+
+
+	// content units 
+		.cUnit {
+			overflow: hidden;
+			/* 
+			 * I'm not 100% sure why I put this overflow: hidden; here.
+			 * it's probably only necessary
+			 * to wrap the cUnit around any possibly floating children
+			 * You can overrule this locally if that makes sense, but be careful
+			 */
+			margin: 0 $grid-margin-hor-px;
+			margin: 0 $grid-margin-hor;
+			padding: $grid-padding-vert-px $grid-padding-hor-px;
+			padding: $grid-padding-vert $grid-padding-hor;
+		}
+
+		.cUnit--full-width {
+		}
+
+	// visibility classes per view
+	.visible-sm,
+	.visible-md,
+	.visible-lg,
+	.visible-xl {
+		display: none;
+	}
+
+	@include mq-min(sm) {
+		.visible-sm {
+			display: initial;
+		}
+	}
+
+	@include mq-min(md) {
+		.visible-sm {
+			display: initial;
+		}
+	}
+
+	@include mq-min(lg) {
+		.visible-sm {
+			display: initial;
+		}
+	}
+
+	@include mq-min(xl) {
+		.visible-sm {
+			display: initial;
+		}
+	}
+		
+
+	// inline-block elements only apply this class on elements you're REALLY sure will always be inline-block (like pager,breadcrumb) 
+	.iBlock,
+	.iList > li,
+	.iList > ul > li {
+		// sometimes class iList can't be set on ul, so has to be set on its parent elm instead, hence iList > ul > li 
+		display: inline-block;
+		vertical-align: top;
+	}
+	
+	.ie7 .iBlock,	
+	.ie7 .iList > li,
+	.ie7 .iList > ul > li {
+		display: inline;
+		zoom: 1;
+	}
+
+	html body .o-content-width .onlySmall {
+		display: none;
+	}
+
+	html body .o-content-width .onlyLarge {
+		display: block;
+	}
+
+//-- End layout and grid stuff --
+	
+	.breakpointwatcher[data-view="large"] {
+		display: block;
+	}
+	
+	.breakpointwatcher[data-view="small"] {
+		display: none;
+	}
+
+//-- Start small screens --
+	
+	@media screen and (max-width: $breakpoint-main-layout-max) {
+	
+		.breakpointwatcher[data-view="large"] {
+			display: none;
+		}
+		
+		.breakpointwatcher[data-view="small"] {
+			display: block;
+		}
+
+		.main {
+			padding: 0;
+		}
+
+		.rlUnit {
+			float: none;
+		}
+
+		.line .rlUnit {
+			// .line selector is only necessary to overrule .rlUnit.sizeXofY specificity 
+			width: auto;
+		}
+
+		// content units 
+			.cUnit {
+				overflow: hidden;
+				/* 
+				 * Comment Jarón: Not sure why I put in this overflow: hidden?
+				 * Does help to hide pushbox's arrows, but that can't be the reason
+				 * If problems arise, look into this more thoroughly
+				 */
+				margin: 0;
+			}
+
+
+		html body .o-content-width .onlySmall {
+			display: block;
+		}
+
+		html body .o-content-width .onlyLarge {
+			display: none;
+		}
+	}
+
+//-- End small screens --

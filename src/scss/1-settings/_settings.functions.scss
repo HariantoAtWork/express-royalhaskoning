@@ -1,0 +1,33 @@
+// strips units from values
+@function strip-units($number) {
+    @return $number / ($number * 0 + 1);
+}
+
+@function pxToRem($px, $factor: 10) {
+	@return strip-units($px)/$factor * 1rem;
+}
+
+@function RemToPx($rem, $factor: 10) {
+	@return strip-units($rem) * $factor * 1px;
+}
+
+
+
+// convert pixels to em
+// 100% = 1 em ~= 16px
+// the default font size in the browser is usually approximately 16px but always 100% and 1em.
+@function pxToEm($px, $base: $font-size-default) {
+    @return (pxToRem($px) / $base) * 1em;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

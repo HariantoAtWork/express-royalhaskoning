@@ -1,0 +1,33 @@
+﻿/*
+* responsive wrapper for youtube videos
+*
+* as found on
+* http://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php
+* which in turn refers to
+* http://alistapart.com/article/creating-intrinsic-ratios-for-video
+*/
+.youtubeWrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	/* css-tricks' solution also adds padding-top for height of youtube's controlbar,
+	but that no longer seems right. I've kept the declaration here as a reminder */
+	/*padding-top: 26px;*/
+	height: 0;
+}
+.youtubeWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+/* The margin between h2 and video appears smaller
+than the margin between h2 and p (because of whitespace above p)
+so add some extra margin */
+
+h2 + .youtubeWrapper {
+	margin-top: 16px;
+	margin-top: 1.6rem;
+}

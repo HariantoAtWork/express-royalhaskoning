@@ -1,0 +1,26 @@
+// define this theme's colors
+	$color-theme-blue: #0098bd;
+	$color-theme-lightgrey: #e9e9e9;
+	$color-theme-mediumgrey: #a0a0a0;
+	$color-theme-darkgrey: #505050;
+	$color-theme-hovergrey: #333;
+
+// map default theme colors to this theme's colors
+	$color-theme: $color-theme-blue;
+	$color-theme-hover: $color-theme-hovergrey;
+
+// unlike other themes, headings don't use theme color
+	$color-headings: $color-theme-darkgrey;
+	$color-headings: $color-theme;
+
+// branding images etc
+	$footer-bg-image: '';
+	$color-footer-bg: $color-theme-darkgrey;
+
+// use thesans everywhere
+$font-family-default: $font-family-brand;
+$line-height-default: 2;
+$font-size-tiny-px: 15px;
+$font-size-tiny: 1.5rem;
+$font-size-default-px: 18px;
+$font-size-default: 1.8rem;

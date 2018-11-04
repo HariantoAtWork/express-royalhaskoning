@@ -1,0 +1,270 @@
+
+//-- Start footer --
+//-- Start stuff for sticking footer to bottom --
+
+.pageWrapper {
+	min-height: 100%;
+	// equal to footer height 
+	margin-bottom: -450px;
+	margin-bottom: -45rem;
+
+	&:after {
+		content: "";
+		display: block;
+	}
+}
+
+.mainFooter, 
+.pageWrapper:after {
+	// .push must be the same height as footer 
+	height:450px;
+	height:45rem;
+}
+
+//-- End stuff for sticking footer to bottom --
+
+.mainFooter { 
+	background: $color-footer-bg url($footer-bg-image) center top no-repeat;
+	// background-image: none;
+	background-size: cover;
+	color: $color-white;
+	font-family: $font-family-brand;
+
+	.rlUnit {
+	}
+
+	.cUnit {
+		padding-bottom: 0;// prevent unwanted space at bottom of page
+		overflow: visible; 
+	}
+
+	a {
+		color: $color-white;
+	}
+
+	.scroll-to-top {
+		position: absolute;
+		right: $grid-padding-hor + $grid-margin-hor; 
+		right: 0;
+		top: 55px;
+		top: -5.5rem;
+
+		.icon-up-big {
+			display: inline-block;
+			margin-left:5px;
+			margin-left: 0.5rem;
+			height: 20px;
+			height: 2rem;
+			width: 20px;
+			width:2rem;
+			font-size: 10px;
+			border: solid 1px #fff;
+			border-radius: 50%;
+			line-height: 2;
+			text-align: center;
+
+			&:before {
+				margin-right: 0;
+			}
+		}
+	}
+
+	.socialMediaList {
+		text-align: center;
+		
+		li {
+			margin-left: 0.5em;
+
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+
+		a {
+			display: block;
+			width: 2em;
+			font-size: 20px;
+			font-size: 2rem;
+			line-height: 2;
+			line-height: 2;
+			text-align: center;
+			transition: background-color 0.5s ease-in-out;
+
+			&:hover {
+				background: #fff;
+				color: $color-lightblue;
+			}
+		}
+	}
+
+	.legal li {
+		display: block;
+		font-size: $font-size-default-px;
+		font-size: $font-size-default;
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+
+		&:first-child {
+			display: block;
+			font-size: $font-size-default-px;
+			font-size: $font-size-default;
+			opacity: 0.7;
+		}
+
+		&:last-child {
+			margin-left: 0;
+		}
+		
+		a {
+			&:hover,
+			&:focus {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $md-max) {
+
+	.mainFooter { 
+
+		.legal {
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: column;
+
+			li {
+				order: 0;
+
+				&:first-child {
+					order: 1;
+					margin-top: $main-padding-top;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: $md-min) {
+
+	.mainFooter {
+
+		.rlUnit {
+			overflow: visible; 
+			position: relative;
+		}
+
+		.push-67 {
+			left: 67%;
+			right: auto;
+		}
+
+		.pull-33 {
+			right: 33%;
+			left: auto; 
+		}
+
+		.unit-social,
+		.unit-legal {
+			margin-top:12rem;
+
+			&::before {
+				height:1px;
+				height:0.1rem;
+				display: block; 
+				background: rgba($color-white, 0.2);
+				content: ''; 
+			}
+		}
+
+		.unit-social {
+			&::before {
+				margin-right: $grid-padding-hor-px + $grid-margin-hor-px;
+				margin-right: $grid-padding-hor + $grid-margin-hor; 
+			}
+
+			.cUnit {
+				padding-left: 0;
+			}
+		}
+
+		.unit-legal {
+			&::before {
+				margin-left: $grid-padding-hor-px + $grid-margin-hor-px;
+				margin-left: $grid-padding-hor + $grid-margin-hor; 
+			}
+
+			.cUnit {
+				padding-right: 0;
+			}
+		}
+
+
+
+		.scroll-to-top {
+			right: $grid-padding-hor-px + $grid-margin-hor-px; 
+			top: -130px;
+			top: -13rem;
+		}
+
+		.socialMediaList { 
+			text-align: left; 
+
+			li {
+				margin: 0 0.1em 0.3125em 0;
+
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+		}
+
+		.legal {
+
+			li { 
+				text-align: left;
+
+				&:first-child {
+					margin-top:-5em; 
+					margin-bottom: 3.625em;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: $xl-min) {
+
+	.pageWrapper {
+		// equal to footer height 
+		margin-bottom: -26rem;
+	}
+
+	.mainFooter, 
+	.pageWrapper:after {
+		// .push must be the same height as footer 
+		height: 26rem;
+	}
+
+	.mainFooter {
+
+		.legal {
+
+			li { 
+				display: inline-block;
+				margin-right: 1em; 
+				text-align: left;
+
+				&:first-child {
+					display: block;
+				}
+			}
+		}
+
+		.socialMediaList { 
+			text-align: right; 
+		}
+	}
+}
+//-- End footer --

@@ -1,0 +1,36 @@
+.quote-block {
+	.quote {
+		display: block;
+		padding-top: 2em;
+		quotes: "“" "”" "‘" "’";
+
+
+		&::before,
+		&::after {
+			display: inline-block;
+			content: open-quote;
+		}
+
+		&::before {
+			$quote-width: 0.5em;
+			margin-left: -1* $quote-width;
+			width: $quote-width;
+		}
+
+		&::after {
+			content: close-quote;
+		}
+	}
+
+	.quotee {
+		// the person who is quoted
+		display: block;
+		margin: 1em 0 0;
+
+		&::before {
+			display: inline-block;
+			margin-right: 0.5em;
+			content: '—';
+		}
+	}
+}

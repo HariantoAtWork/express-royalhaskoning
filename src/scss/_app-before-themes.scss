@@ -1,0 +1,15 @@
+/////////////////////////
+////
+////  APP STYLESHEET
+////
+////  This files imports everything that has to be included before the theming variables
+////
+/////////////////////////
+
+// 1. Settings: Global variables, config switches
+@import "1-settings/settings.variables";
+@import "1-settings/settings.functions";
+@import "1-settings/settings.breakpoints";
+@import "1-settings/settings.grid";
+@import "1-settings/settings.spacing";
+@import "1-settings/settings.theme-and-colors";

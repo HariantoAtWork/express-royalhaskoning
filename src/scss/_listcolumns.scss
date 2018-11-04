@@ -1,0 +1,98 @@
+//-- Start listcolumns --
+
+	.listcolumns ul,
+	.listcolumns ol {
+		column-count: 2;
+	}
+
+	.listcolumns[data-column-count="3"] ul,
+	.listcolumns[data-column-count="3"] ol {
+		column-count: 3;
+	}
+
+	// Start styles for ul's that are split by js 
+
+	.listcolumns-split-wrapper {
+		overflow: hidden;
+	}
+
+	.listcolumns-split {
+		float: left;
+	}
+
+	ul.listcolumns-split[data-column-count="2"] {width: 49%; }
+	ul.listcolumns-split[data-column-count="3"] {width: 33.3%; }
+	ul.listcolumns-split[data-column-count="4"] {width: 24%; }
+	ul.listcolumns-split[data-column-count="5"] {width: 19%; }
+
+	ol.listcolumns {
+		padding-left: 3%;
+	}
+	ol.listcolumns-split[data-column-count="2"] {width: 46%; }
+	ol.listcolumns-split[data-column-count="3"] {width: 30.3%; }
+	ol.listcolumns-split[data-column-count="4"] {width: 22%; }
+	ol.listcolumns-split[data-column-count="5"] {width: 16%; }
+
+	//-- Start exception for listcolumns in sidecol --
+
+		@media screen and (max-width: $lg-max) {
+	
+			.size1of3 .listcolumns[data-column-count] ul,
+			.size1of3 .listcolumns[data-column-count] ol {
+				-webkit-column-count: 1;
+				-moz-column-count: 1;
+				column-count: 1;
+			}
+
+			.size1of3 .listcolumns-split[data-column-count] {
+				float: none;
+				width: auto;
+			}
+		}
+
+	//-- End exception for listcolumns in sidecol --
+
+	//-- Start small screens --
+		
+		/*
+		 * in smaller screens, reduce column count to 2
+		 * for lower IE, lists will be divided in separate lists
+		 * so make them appear underneath eachother
+		 */
+		@media screen and (max-width: $sm-max) {
+	
+			.listcolumns[data-column-count] ul,
+			.listcolumns[data-column-count] ol {
+				-webkit-column-count: 2;
+				-moz-column-count: 2;
+				column-count: 2;
+			}
+
+			ol.listcolumns-split[data-column-count],
+			ul.listcolumns-split[data-column-count] {
+				float: none;
+				width: auto;
+			}
+	
+		}
+	
+	//-- End small screens --
+
+	//-- Start really small screens --
+
+		// on really small screens, reduce column count to 1 
+		@media screen and (max-width: $xs-max) {
+	
+			.listcolumns[data-column-count] ul,
+			.listcolumns[data-column-count] ol {
+				-webkit-column-count: 1;
+				-moz-column-count: 1;
+				column-count: 1;
+			}
+	
+		}
+	
+	//-- End really small screens --
+		
+
+//-- End listcolumns --

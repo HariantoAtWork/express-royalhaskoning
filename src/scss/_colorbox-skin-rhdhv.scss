@@ -1,0 +1,48 @@
+#cboxContent h2:first-child {
+	margin-top: 1em;
+}
+
+#cboxOverlay {
+	background: rgba(0,0,0,0.9);
+}
+
+#cboxTopLeft,
+#cboxTopCenter,
+#cboxTopRight,
+#cboxMiddleLeft,
+#cboxMiddleRight,
+#cboxBottomLeft,
+#cboxBottomCenter,
+#cboxBottomRight {
+	background: #fff;
+}
+
+#cboxTopLeft,
+#cboxTopCenter,
+#cboxTopRight,
+#cboxBottomLeft,
+#cboxBottomCenter,
+#cboxBottomRight {
+	height: 8px;
+}
+
+#cboxTopLeft,
+#cboxTopRight,
+#cboxMiddleLeft,
+#cboxMiddleRight,
+#cboxBottomLeft,
+#cboxBottomRight {
+	width: 8px;
+}
+
+.colorboxCloser {
+	visibility: hidden;/* will be shown by js in iFrames */
+	margin-left: 0.5em;
+	color: $color-textlightgrey;
+	text-decoration: underline;
+}
+
+.colorboxCloser:hover,
+.colorboxCloser:focus {
+	text-decoration: none;
+}

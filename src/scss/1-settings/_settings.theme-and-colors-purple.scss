@@ -1,0 +1,11 @@
+// define this theme's colors
+	$color-theme-purple: #8a397f;
+	$color-theme-hover-purple: #77216b;
+
+
+// map default theme colors to this theme's colors
+	$color-theme: $color-theme-purple;
+	$color-theme-hover: $color-theme-hover-purple;
+
+// branding images etc
+	$footer-bg-image: '/images/themes/purple/CC2 rhdhv web footer.jpg';

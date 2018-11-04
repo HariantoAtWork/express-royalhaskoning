@@ -1,0 +1,37 @@
+$color-darkblue: #00567d !default;
+$color-mediumblue: #0086a8 !default;
+$color-mediumlightblue: #34b9da !default;
+$color-lightblue: #01a7d1 !default;
+$color-backgroundblue: #dff0f6 !default;
+$color-footer-blue: #00577d;// sampled from footer images - most footers use this color
+
+$color-theme: #b8c300 !default;
+$color-theme-hover: #9ea700 !default;
+
+$color-textverylightgrey: #ccc !default;
+$color-textlightgrey: #999 !default;
+$color-textgrey: #4b4b4b !default;
+$color-linelightgrey: #dadbd1 !default;
+$color-almostblack: #0e0e0e !default;
+
+$color-bg-verylightgrey: #f0f0f0 !default;
+
+$color-white: white !default;
+
+$color-feedback-yellow: #ffc !default;
+$color-bg-pink: #fef1f1 !default;
+$color-error-red: #d90000 !default;
+
+$color-theme: $color-theme;
+$color-theme-hover: $color-theme-hover;
+
+// linear-gradient colors
+
+$color-panel-gradient-top: #1384a3 !default;
+$color-panel-gradient-bottom: #084e60 !default;
+
+
+// branding images etc
+  $footer-bg-image: '/images/bg-footer.jpg';
+	$color-footer-bg: $color-footer-blue;
+    

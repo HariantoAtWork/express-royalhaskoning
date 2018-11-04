@@ -1,0 +1,48 @@
+.three-teaser-block {
+	margin: 2.5rem 0;
+
+	&__teaser-block {
+		background-color: $color-mediumblue;
+		color: $color-white;
+		margin: 0 $grid-margin-hor;
+		display: flex;
+	
+		@media screen and (max-width: $lg-max) {
+			flex-flow: column;
+
+		}
+	}
+
+	&__teaser {
+
+		@media screen and (min-width: $xl-min) {
+			width:50%;
+		}
+
+		.mediaBox {
+			margin: 0;
+		}
+
+		.bodyBox {
+			padding: $grid-padding-vert $grid-padding-hor;
+		}
+
+		.quote-block .quote {
+			padding-top: 0;
+			font-weight: bold;
+		}
+
+		.quote-block .quotee {
+			font-style: italic;
+		}
+
+		.textBlock  {
+			color: $color-white;
+
+			h2,
+			p {
+				color: inherit;
+			}
+		}
+	}
+}

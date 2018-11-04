@@ -1,0 +1,108 @@
+/*-- Start cookieInfo --*/
+	
+.c-cookie {
+	display: none;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;	
+	top: 0;
+	z-index: 10040;
+	animation: fade-in 1s;
+
+	.toggle {
+
+	&.expanded {
+
+		&  ~ .toggle.collapse {
+			display: none;
+		}
+
+		&.collapsed {
+			display: none!important; //mindfuck...
+		}
+	}
+
+	&.collapsed {
+		display: none;
+
+		& + .collapse.expanded {
+			display: inline;
+		}
+
+	}
+}
+}
+
+.c-cookie__modal {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	max-height: 90vh;
+	margin: 2rem;
+	color: $color-darkblue;
+	background: $color-white;
+	overflow: auto;
+
+	
+	@media screen and (min-width: $xl-min) {
+		top: 10vh;
+		left: 25vw;
+		width: 50vw;
+	}
+		
+	& footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 2rem 4rem;
+		border-top: 1px solid $color-linelightgrey;	
+	}
+}
+
+.c-cookie__backdrop {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,.4);
+}
+
+.js-cookie-consent-open {
+	overflow: hidden;
+}
+
+.togglePanel .expanded + fieldset {
+		max-height: 0;
+		overflow: hidden;
+		transition: .3s ease-in-out;
+}
+
+
+
+[data-cc-consented] {
+	&:disabled {
+		background-color: $color-textlightgrey;
+		pointer-events: none;
+	}
+}
+
+/*-- Start small screens --*/
+	
+	@media screen and (max-width: $sm-max) {
+
+
+
+	}
+
+/*-- Start large screens --*/
+
+		@media screen and (min-width: $md-min) {
+			.c-cookie__body {
+				p, 
+				fieldset {
+					padding: 0 4rem 4rem 4rem;
+				}
+			}
+		}
+
+/*-- End cookieInfo --*/

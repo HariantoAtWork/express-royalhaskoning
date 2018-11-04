@@ -1,0 +1,35 @@
+//we want to have the screen widths in ems, but it's easier to think in px
+// now convert px-based vars to ems.
+$xs-min: 0;
+$sm-min: pxToEm(450px);
+$md-min: pxToEm(640px);// 40em
+$lg-min: pxToEm(720px);// 50em
+$xl-min: pxToEm(960px);//60em
+
+$rem-factor: 1.6;// this comes before html font-size is set, so 1rem is still 16px
+$sm-min: 45rem/$rem-factor;
+$md-min: 64rem/$rem-factor;
+$lg-min: 72rem/$rem-factor;
+$xl-min: 96rem/$rem-factor;
+
+$xs-max: ($sm-min - 0.01);
+$sm-max: ($md-min - 0.01);
+$md-max: ($lg-min - 0.01);
+$lg-max: ($xl-min - 0.01);
+$xl-max: 5000px;
+
+$breakpoints: (
+    // name, min-width, max-width
+    (xs,    $xs-min,    $xs-max),
+    (sm,    $sm-min,    $sm-max),
+    (md,    $md-min,    $md-max),
+    (lg,    $lg-min,    $lg-max),
+    (xl,    $xl-min,    $xl-max)
+);
+
+// more specific breakpoints that may have impact outside of their own scss file
+$breakpoint-header: 52em;
+$breakpoint-header-max: 51.999em;
+
+$breakpoint-main-layout: $lg-min;
+$breakpoint-main-layout-max: $md-max;

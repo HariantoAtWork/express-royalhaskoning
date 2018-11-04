@@ -1,0 +1,22 @@
+body {
+    padding: 50px;
+    font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+
+aside {
+    background-color: #e5edf0;
+}
+
+@import './compositions/composition-vacancies';
+@import './compositions/composition-vacancies-details';
+
+.composition-vacancies-detail {
+    &__main {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    &__aside {}
+
+    &__footer {}
+}

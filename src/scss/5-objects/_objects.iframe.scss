@@ -1,0 +1,34 @@
+/*
+* iframes can be put directly into rlUnits
+*/
+.cms-iframe {
+	margin: 0 ($grid-margin-hor + $grid-padding-hor);
+	width: calc(100% - 2*#{$grid-margin-hor + $grid-padding-hor});
+
+	.size1of1 & {
+		margin: 0;
+		width: 100%;
+	}
+}
+
+//-- Start vacancies iframe --
+
+	.vacanciesIFrame {
+		margin: 0;// pages within vacancies iframe already have padding etc, so we don't want to add margin
+		width: 100%;
+		height: 1000px;// will be resized by javascript once loaded 
+	}
+
+//-- End vacancies iframe --
+
+.gameIframe {
+	height: calc(100vh - 53px)!important;//height navigation / topbar
+	min-height: 880px!important;
+
+	
+
+	@media screen and (max-width: $sm-max) {
+		height: 100vh!important;
+		min-height: 620px!important;
+	}
+}

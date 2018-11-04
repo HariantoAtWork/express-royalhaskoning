@@ -1,0 +1,136 @@
+.contactBlock {
+	font-family: 'TheSans', verdana, helvetica, arial, sans-serif;
+
+	.mediaBox {
+		max-width: 20%;
+	}
+
+	.bodyBox p {
+		margin-bottom: 0;
+	}
+
+	.name {
+		margin-bottom: 0;
+		font-weight: bold;
+	}
+
+	.jobTitle {
+		font-style: italic;
+	}
+
+	.toggle {
+		display: inline-block;
+		margin-top: 1em;
+	}
+
+	.togglePanel {
+		overflow: hidden;
+		max-height: 0;
+		transition: max-height 0.3s ease-in-out;
+	}
+
+	.togglePanel.expanded {
+		max-height: 35em;
+	}
+}
+
+.contactPerson {
+	margin-top: 1em;
+
+	.togglePanel & {
+		// contact persons in toggle panel need vertical separation styles
+		margin-top: 1.5em;
+		padding-top: 2em;
+		border-top: 1px solid $color-backgroundblue;
+	}
+}
+
+.contactInfo {
+	clear: left;
+	margin-bottom: 1em;
+
+	a {
+		color: $color-lightblue;
+	}
+
+	.fontIcon {
+		margin-right: 0.5em;
+		color: $color-mediumblue;
+	}
+}
+
+
+
+
+//-- 	BELOW IS NEW STYLING 
+// THIS WAS STARTED, BUT STOPPED SINCE OTHER ISSUES GOT HIGHER PRIORITY
+
+
+// .contactBlock {
+// 	background: $color-green; 
+// 	font-family: 'TheSans', verdana, helvetica, arial, sans-serif;
+
+// 	h2 {
+// 		color: $color-white; 
+// 	}
+
+// 	.contactPerson {
+// 		margin-top: 1em;
+// 	}
+
+// 	.contactInfo {
+// 		clear: left;
+// 		margin-bottom: 1em;
+// 	}
+
+// 	.contactInfo,
+// 	.contactInfo a {
+// 		color: $color-white;
+// 	}
+
+// 	.contactInfo .fontIcon {
+// 		margin-right: 0.5em;
+// 		color: $color-white;
+// 	}
+
+
+// 	.mediaBox {
+// 		max-width: 20%;
+// 	}
+
+// 	.bodyBox p {
+// 		margin-bottom: 0;
+// 	}
+	
+// 	.name {
+// 		margin-bottom: 0;
+// 		font-weight: bold;
+// 	}
+
+// }
+// //-- Start contactblock --
+
+
+// 	.togglePanel .contactPerson {
+// 		margin-top: 1.5em;
+// 		padding-top: 2em;
+// 		border-top: 1px solid $color-backgroundblue;
+// 	}
+
+
+
+	.contactBlock 
+
+	.contactBlock .jobTitle {
+		font-style: italic;
+	}
+
+
+
+	.more.toggle {
+		display: inline-block;
+		margin-top: 1em;
+	}
+
+
+//-- End contactblock --

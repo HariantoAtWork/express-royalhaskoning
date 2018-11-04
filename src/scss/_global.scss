@@ -1,0 +1,2048 @@
+html {
+	height: 100%;
+	font-size: 62.5%;// 10px will be value for rems 
+   -webkit-font-smoothing: antialiased;
+   font-smoothing: antialiased;
+   text-rendering: optimizeLegibility;
+   -webkit-text-size-adjust: none; // prevent font scaling when orientation change 
+}
+
+body {
+	overflow-x: hidden;
+	height: 100%;
+	// background: #f1f1f1 url(/images/bg-body.png) 50% top repeat-y;
+	// background-image: url(/images/bg-body.png), linear-gradient(#fff 0, #fff 200px, #f1f1f1 500px);
+	// background-position: 50% top, 0 0;
+	// background-repeat: repeat-y, no-repeat;
+	color: $color-textgrey;
+	font-family: $font-family-default;
+	font-size: $font-size-default-px;
+	font-size: $font-size-default;
+	line-height: $line-height-default;
+}
+
+
+//-- Start headings --
+
+	// headings inside and outside of cUnits should align with cUnit content (margin+padding = 40px) 
+	h1, .h1,
+	h2, .h2 {
+		font-family: $font-family-brand-bold;
+		font-size: $font-size-xxl-px;
+		font-size: $font-size-xxl;
+		line-height: 1;
+		text-transform: uppercase;
+	}
+
+	h1 {
+		margin: 0.5em ($grid-margin-hor-px + $grid-padding-hor-px) 0;// make h1's outside of o-content-width align with content inside
+		margin: 0.5em ($grid-margin-hor + $grid-padding-hor) 0;
+		color: $color-theme;
+	}
+
+	a:hover h1, a:focus h1,
+	a:hover .h1, a:focus .h1 {
+		color: $color-theme-hover;
+	}
+
+	.cUnit h1,
+	.cUnit .h1 {
+		margin-top: 0;
+		margin-bottom: 0.5em;
+
+		.o-content-width & {
+			margin-right: 0;
+			margin-left: 0;
+		}
+	}
+
+
+	h2, .h2 {
+		// default h2's; the ones in rte and sideCol get restyled later 
+		margin: 1.5em 40px 0.5em;
+		margin: 1.5em 4rem 0.5em;
+		color: $color-darkblue;
+	}
+
+	h2:after,
+	.h2:after {
+		@include heading-dash;
+	}
+
+	h2 + .cUnit {
+		// white space between h2 + .cUnit has to end up as h2 margin-bottom 
+		// -20px undoes .cUnit's padding-top 
+		margin-top: -20px;
+		margin-top: -2rem;
+	}
+
+	.pg-homepage .mainCol h2 {
+		margin: 2rem 4rem 0.6rem;// before 2016 - h2's which are not in a cUnit 
+	}
+
+	.pg-homepage .mainCol .cUnit h2 {
+		margin-left: 0;
+	}
+
+	a:hover h2, a:focus h2,
+	a:hover .h2, a:focus .h2 {
+		color: $color-lightblue;
+	}
+
+	// within cUnits, give h2's and h3's margin-top of 0 so they align when next to eachother
+	.cUnit {
+		h2:first-child, .h2:first-child,
+		h3:first-child, .h3:first-child,
+		.date + h2, .date + .h2,
+		.date + h3, .date + .h3 {
+			margin-top: 0;
+		}
+	}
+
+	// when h2 is in responsive content, and outside of cUnit give it same margin as cUnit's padding
+	.responsiveContent {
+		h2:first-child {
+			margin-top: $grid-padding-vert;
+		}
+
+		.cUnit h2:first-child {
+			margin-top: 0;
+		}
+	}
+
+	h3, .h3 {
+		margin: 20px 40px;
+		margin: 2rem 4rem;
+		font-family: $font-family-brand-bold;
+		font-size: $font-size-l-px;
+		font-size: $font-size-l;
+		line-height: 1;
+		color: $color-darkblue;
+		text-transform: uppercase;
+	}
+
+	h4, .h4 {
+		font-family: $font-family-brand-bold;
+		font-size: inherit;
+	}
+
+	//-- Start sideCol --
+		/* in the 2016 redesign, the sideCol styling is quite different from the mainCol styling.
+		we don't want to change the markup too much, so we'll make the styling inside dependent on its parent (sideCol) */
+
+		.sideCol .h1 {
+			margin: 40px;
+			margin: 4rem;
+		}
+
+		.sideCol h2,
+		.sideCol .h2,
+		.sideCol .rte h2 {
+			font-family: $font-family-brand-bold;
+			font-size: $font-size-m-px;
+			font-size: $font-size-m;
+			color: $color-theme;
+			letter-spacing: 0.2em;
+			text-transform: uppercase;
+		}
+
+		.sideCol h2:after,
+		.sideCol .h2:after {
+			margin: 1em 0;
+		}
+
+		.pg-homepage .sideCol h2,
+		.pg-homepage .sideCol .h2 {
+			color: $color-theme;
+		}
+
+		.pg-homepage .sideCol > div:first-child h2,
+		.pg-homepage .sideCol > div:first-child .h2 {
+			// h2 of first component in sidecol 
+			margin-top: 0;// make it align with h1 
+		}
+	//-- End sidecol --
+
+	//-- Start small screens --
+
+		@media screen and (max-width: $sm-max) {
+			// on small screens, cUnits have no more margin and smaller padding (15px) 
+			// so adjust horizontal compensition 
+			h1, .h1,
+			.pg-homepage h2,
+			h2, .h2,
+			h3, .h3 {
+				margin-left: 15px;
+				margin-left: 1.5rem;
+				margin-right: 15px;
+				margin-right: 1.5rem;
+			}
+
+		}
+
+	//-- End small screens --
+
+
+
+	// colorbox styles 
+	.cUnit h1, .cUnit .h1, #cboxContent  h1, #cboxContent  .h1,
+	.cUnit h2, .cUnit .h2, .sideCol .cUnit h2, .sideCol .cUnit .h2, #cboxContent h2, #cboxContent .h2,
+	.cUnit h2, .cUnit .h2, #cboxContent h2, #cboxContent .h2,
+	.cUnit h3, .cUnit .h3, #cboxContent h3, #cboxContent .h3 {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+//-- End headings --
+
+a {
+	text-decoration: none;
+	color: $color-mediumblue;
+}
+
+p {
+	margin: 0 0 1.5em;
+}
+
+p::only-child {
+	margin-bottom: 0;
+}
+
+p a {
+	color: $color-mediumblue;
+}
+
+p a:hover,
+p a:focus {
+	color: $color-lightblue;
+	text-decoration: underline;
+}
+
+sub,
+sup {
+	vertical-align: baseline;
+	position: relative;
+	top: -0.4em;
+}
+sub { 
+  top: 0.4em; 
+}
+
+//-- Start general classes --
+
+	.hidden {
+		display: none;
+	}
+
+	.blockLink {
+		display: block;
+	}
+
+	a.blockLink {
+		color: $color-textgrey;
+	}
+
+	#wrapper .green {
+		color: #fff;
+		background: $color-theme;
+	}
+
+	#wrapper .backgroundblue {
+		background: $color-backgroundblue;
+		color: $color-mediumblue;
+	}
+
+	#wrapper a.backgroundblue:hover,
+	#wrapper a.backgroundblue:focus {
+		background: $color-mediumblue;
+		color: #fff;
+	}
+
+	.footnote {
+		color: $color-textlightgrey;
+	}
+
+//-- End general classes --
+
+
+//-- Start topbar --
+
+	.topbar {
+		position: relative;
+		z-index: 1004;// above stickyTopbar 
+		height: 50px;
+		background: url(/images/bg-topbar.png) 50% 0 no-repeat;
+		font-size: 13px;
+		font-size: 1.3rem;
+	}
+
+	.topbar .responsiveContent {
+		height: 100%;
+	}
+
+	.topbar .wrapper {
+		padding: 0 20px;
+		padding: 0 2rem;
+		max-width: 64,285714em;// 70em -2*1.42857 padding - 2*1.42857 margin (margin hor is auto here) 
+		height: 100%;
+		background: transparent;
+		color: #fff;
+		text-align: right;
+	}
+
+	.topbar form {
+		display: inline-block;
+		height: 100%;
+	}
+
+	.topbar a {
+		color: #fff;
+	}
+
+
+
+	.localization {
+		height: 100%;
+	}
+
+	@media screen and (max-width: $sm-max) {
+		ul.localization {
+			clear: both;
+		}
+	}
+	@media screen and (min-width: $md-min) {
+		.localization > li {
+			border-left: 4px solid rgba(0, 134, 168, 0);//#b8c402
+			border-right: 4px solid rgba(0, 134, 168, 0);
+		}
+	}
+	.localization > li {
+		position: relative;
+		height: 100%;
+
+		-webkit-transition: all ease-in-out .5s;
+		-moz-transition: all ease-in-out .5s;
+		-o-transition: all ease-in-out .5s;
+		transition: all ease-in-out .5s;
+	}
+	.localization > li.country {
+		min-width: 177px;
+	}
+	@media screen and (min-width: $md-min) {
+		.localization > li {
+			padding: 0 20px;
+		}
+	}
+	@media screen and (min-width: $md-min) {
+		.localization > li:after {
+			background: 0 0 no-repeat url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2014%207%22%20width%3D%2214%22%20height%3D%227%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M7%2C7C6.8%2C7%2C6.6%2C6.9%2C6.5%2C6.8L0.2%2C1.2c-0.3-0.3-0.3-0.7%2C0-1c0.3-0.3%2C0.8-0.3%2C1.1%2C0L7%2C5.4l5.7-5.2%0A%09c0.3-0.3%2C0.8-0.3%2C1.1%2C0c0.3%2C0.3%2C0.3%2C0.7%2C0%2C1L7.5%2C6.8C7.4%2C6.9%2C7.2%2C7%2C7%2C7z%22%2F%3E%3C%2Fsvg%3E");
+			width: 14px;
+			height: 7px;
+			display: inline-block;
+			content: '';
+		}
+	}
+
+	@media screen and (min-width: $md-min) {
+		.localization > li:not(.language).expanded {
+			background-color: $color-mediumblue;
+			border-left: 4px solid rgba(180, 196, 13, 0.5);//#b4c40d
+			border-right: 4px solid rgba(180, 196, 13, 0.5);
+
+			-webkit-transition: all ease-in-out .5s;
+			-moz-transition: all ease-in-out .5s;
+			-o-transition: all ease-in-out .5s;
+			transition: all ease-in-out .5s;
+		}
+	}
+
+	.localization > li label {
+		line-height: 45px;
+		cursor: default;
+		padding-right: 10px;
+	}
+
+	@media screen and (min-width: $md-min) {
+		.localization li ul {
+			position: absolute;
+			top: 50px;
+		}
+	}
+
+	.localization li ul {
+		max-height: 0;
+		background-color: $color-backgroundblue;
+		overflow: hidden;
+		right: -4px;
+		text-align: left;
+		border-top: none;
+		padding: 0 20px;
+
+		-webkit-transition: all ease-in-out .5s;
+		-moz-transition: all ease-in-out .5s;
+		-o-transition: all ease-in-out .5s;
+		transition: all ease-in-out .5s;
+	}
+	.localization li.country ul {
+		min-width: 177px;
+	}
+	@media screen and (min-width: $md-min) {
+		.localization li ul {
+			border: solid 4px #fff;
+			border-top: none;
+		}
+	}
+	.localization li ul li {
+		color: $color-mediumblue;
+		font-weight: bold;
+	}
+	.localization li.expanded ul {
+		-webkit-transition: all ease-in-out .5s;
+		-moz-transition: all ease-in-out .5s;
+		-o-transition: all ease-in-out .5s;
+		transition: all ease-in-out .5s;
+	}
+	@media screen and (min-width: $md-min) {
+		.localization li.expanded ul {
+			max-height: 40em;
+			padding: 10px 20px;
+			text-align: left;
+			-webkit-box-shadow: 0px 2px 5px 0px rgba(50, 50, 50, 0.5);
+			-moz-box-shadow:    0px 2px 5px 0px rgba(50, 50, 50, 0.5);
+			box-shadow:         0px 2px 5px 0px rgba(50, 50, 50, 0.5);
+
+			-webkit-transition: all ease-in-out .5s;
+			-moz-transition: all ease-in-out .5s;
+			-o-transition: all ease-in-out .5s;
+			transition: all ease-in-out .5s;
+
+		}
+	}
+	@media screen and (max-width: $sm-max) {
+		.localization li.expanded ul {
+			max-height: 40em;
+			padding: 10px 20px;
+			text-align: left;
+
+			-webkit-transition: all ease-in-out .5s;
+			-moz-transition: all ease-in-out .5s;
+			-o-transition: all ease-in-out .5s;
+			transition: all ease-in-out .5s;
+		}
+	}
+
+	.localization li ul a {
+		color: $color-lightblue;
+		font-weight: normal;
+	}
+	.localization li ul a:hover {
+		text-decoration: underline;
+	}
+	.localization li .icon-earth {
+		display: none;
+	}
+	@media screen and (min-width: $md-min) {
+		.localization li .icon-earth {
+			display: inline;
+			font-size: 26px;
+			vertical-align: middle;
+			margin-right: 5px;
+		}
+	}
+
+
+
+	.localization > li .icon-down-big {
+		position: absolute;
+		top: 10px;
+		top: 1rem;
+		right: 4px;
+		padding: 0.7em 0 0.4em;
+		width: 1.6em;
+		background: #b4c40d;// locally sampled green color 
+		color: #fff;
+		pointer-events: none;
+	}
+	svg.svg-icon-down-big {
+		width: 24px;
+		height: 30px;
+		position: absolute;
+		top: 1rem;
+		right: -1px;
+		pointer-events: none;
+	}
+	svg.svg-icon-down-big rect {
+		fill: #b4c40d;// locally sampled green color 
+	}
+
+	.no-pointerevents .localization li .icon-down-big,
+	.no-pointerevents .localization li .icon-down-big {
+		// IE8 and 9 do not support pointer events, so click on element won't trigger selectbox 
+		display: none;
+	}
+
+	.localization .language .icon-down-big {
+		top: 8px;
+		background: #a8bd0c;// locally sampled green color 
+	}
+	.localization .language svg.svg-icon-down-big rect {
+		fill: #a8bd0c;// locally sampled green color 
+	}
+
+	.localization select {
+		margin-top: 10px;
+		margin-top: 1rem;
+		border: none;
+		width: auto;
+		background: none;
+		color: #fff;
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		appearance: none;
+		padding-right: 25px;
+	}
+	.ie9 .localization select {
+		padding-right: .3em;
+	}
+	.localization select::-ms-expand {
+		display: none;
+	}
+
+
+	.localization option {
+		color: $color-textgrey;
+		background: #fff;
+	}
+
+	.ie7 .localization option,
+	.ie8 .localization option,
+	.ie9 .localization option {
+		// in IE, option styles overrule select styles 
+		color: #fff;
+		background: #b4c40d;// locally sampled green color 
+	}
+
+	.ie7 .localization .language option,
+	.ie8 .localization .language option,
+	.ie9 .localization .language option {
+		// in IE, option styles overrule select styles 
+		background: #acbf0d;// locally sampled green color 
+	}
+
+	.localization .language {
+		height: 100%;
+		background-image: url(/images/rhdhv-icons.png), linear-gradient(to right, transparent 0, transparent 30px, #a1ba0c 30px, #a1ba0c 80%, rgba(161, 186, 12, 0));// rgb in rgba is same as hex-color 
+		background-repeat: no-repeat, no-repeat;
+	}
+	@media screen and (min-width: $md-min) {
+		.localization .language {
+			padding-left: 75px; // background arrow + earth icon  
+			margin-left: -15px;
+			padding-right: 0;
+		}
+	}
+	.localization .language select {
+		min-width: 115px;
+	}
+
+	.language .icon-earth:before {
+		position: absolute;
+		display: block;
+		top: 50%;
+		left: 55px;
+		margin-top: -13px;
+		margin-top: -1.3rem;
+		font-size: 26px;
+		font-size: 2.6rem;
+	}
+
+	.localization .language a {
+		display: inline-block;
+		margin-top: 0.5em;
+		padding: 0;
+	}
+
+
+	//-- Start small screens --
+		// in small screens, .localization is moved into .navHolder 
+
+		.navHolder .localization {
+			background: #fff;// to avoid problems with Blackberry, keep background white 
+		}
+
+		.navHolder .localization > li {
+			background-color: $color-theme;
+		}
+
+		.navHolder .localization .country {
+			margin: 0;
+			border-bottom: 1px solid #fff;// rhdhv green 
+		}
+
+		.navHolder .localization label {
+			display: block;
+			padding: 0.3em 1.3em;
+			color: #fff;
+		}
+		@media screen and (max-width: $sm-max) {
+			.localization label {
+				position: relative;
+			}
+			.localization label:after {
+				content: '';
+				position: absolute;
+				right: 20px;
+				top: 20px;
+				display: inline-block;
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 8px 5px 0 5px;
+				border-color: #fff transparent transparent transparent;
+			}
+			.localization .expanded label:after {
+				border-width: 0 5px 8px;
+				border-color: transparent transparent #fff transparent;
+			}
+		}
+
+		.navHolder .language .icon-earth:before {
+			display: none;
+		}
+
+		.navHolder .localization select {
+			margin-top: 0;
+			padding: 0.8em 1em;
+			width: 100%;
+			color: $color-mediumblue;
+		}
+
+		.navHolder .localization .icon-down-big,
+		.navHolder .localization svg.svg-icon-down-big {
+			display: none;// hide icons, use default dropdown 
+		}
+
+		.navHolder .language {
+			padding-left: 0;
+			background: #fff;// to avoid problems with Blackberry, keep background white 
+		}
+	//-- End small screens --
+
+//-- End topbar --
+
+//-- Start mainHeader --
+
+	.mainHeader {
+		position: relative;
+		z-index: 1002;// underneath stickyTopbar, above stickyHeader 
+		overflow: visible;
+		margin: 0;// cancel 2rem horizontal margins to make sure mainHeader overlaps stickyHeader 
+		padding: 2rem 4rem;// add 2rem hor margin to padding and bottom margin to padding so header overlaps shadow 
+		min-height: 7.5em;
+		background: #fff;
+	}
+
+	/*.logo {
+		float: left;
+		display: block;
+		width: 25%;
+		max-width: 254px;
+	}*/
+
+	.logo img.onlyLarge {
+		margin-left: -14px;// somehow, 30px is too far to the left? 
+		margin-left: -3rem;
+	}
+
+	//-- Start big screens --
+
+		@media screen and (min-width: $md-min) {
+
+		}
+
+	//-- End big screens --
+
+		.logo img {
+			max-width: 100%;
+			height: auto;
+		}
+
+		.menuToggle {
+			float: right;
+			margin-top: 0.6em;
+			color: $color-mediumblue;
+			font-size: 30px;
+			font-size: 3rem;
+		}
+
+		.navHolder {
+			color: #fff;
+		}
+
+		.mainNav {
+			position: absolute;
+			bottom: 7px;
+			bottom: .7rem;
+			right: 20px;
+			text-align: right;
+			font-family: $font-family-brand-bold;
+			font-size: 0;// set to 0 to keep consistent spacing in mainHeader and stickyHeader; spacing problems occurred because of display inline-block;
+		}
+
+		.mainNav > li {
+			position: relative;
+			padding: 0 1em 7px;
+			font-size: 18px;
+			font-size: 1.8rem;
+		}
+
+		.mainNav > li.challenges {
+			top: 0;
+			right: 0;
+			color: $color-textlightgrey;;
+			font-weight: 300;
+			border-left: 1px solid currentColor;
+			padding-left: 15px;
+		}
+
+		@media screen and (max-width: $sm-max) {
+			.mainNav > li {
+				padding: 0;
+			}
+		}
+
+		.mainNav > li > a {
+			display: block;
+			border-bottom: 2px solid transparent;
+			color: $color-mediumblue;
+		}
+
+		.mainNav > li > a:hover,
+		.mainNav > li > a:focus,
+		.mainNav > li a.active {
+			border-bottom-color: currentColor;
+			color: $color-lightblue;
+		}
+
+		.mainNav > li.hasSub a:hover,
+		.mainNav > li.hasSub a:focus {
+			border-bottom-color: transparent;
+		}
+
+		.mainNav > li:first-child > a {
+			margin-left: 0;
+		}
+
+		.mainNav .level2 {
+			position: absolute;
+			overflow: hidden;
+			max-height: 0;
+			z-index: 1;
+			right: 18px;
+			margin-top: 7px;// room for arrow 
+			text-align: left;
+			white-space: nowrap;// position: absolute makes element take up as little space as possible, causing inline-block childs to wrap 
+			font-size: 13px;
+			font-size: 1.3rem;
+			-webkit-transition-property: max-height;
+			-moz-transition-property: max-height;
+			-o-transition-property: max-height;
+			-ms-transition-property: max-height;
+			transition-property: max-height;
+			-webkit-transition-duration: 0.2s;
+			-moz-transition-duration: 0.2s;
+			-o-transition-duration: 0.2s;
+			-ms-transition-duration: 0.2s;
+			transition-duration: 0.2s;
+			-webkit-transition-delay: 0.2s;
+			-moz-transition-delay: 0.2s;
+			-o-transition-delay: 0.2s;
+			-ms-transition-delay: 0.2s;
+			transition-delay: 0.2s;
+		}
+
+		.ie7 .mainNav .level2 {
+			min-width: 15em;
+		}
+
+		.mainNav li:hover .level2 {
+			overflow: visible;
+			max-height: 40em;
+		}
+
+		.mainNav li .level2:before {
+			content: "";
+			position: absolute;
+			width: 0;
+			height: 0;
+			//z-index: -1;
+			top: -1em;
+			right: 2em;
+			border: 7px solid transparent;
+			border-left-width: 10px;
+			border-right-width: 10px;
+			-webkit-transition-property: border-bottom-color;
+			-moz-transition-property: border-bottom-color;
+			-o-transition-property: border-bottom-color;
+			-ms-transition-property: border-bottom-color;
+			transition-property: border-bottom-color;
+			// delay on not hover: menu delay + menu duration, so arrow will disappear as soon as menu does 
+			-webkit-transition-delay: 0.4s;
+			-moz-transition-delay: 0.4s;
+			-o-transition-delay: 0.4s;
+			-ms-transition-delay: 0.4s;
+			transition-delay: 0.4s;
+		}
+
+		.mainNav li:hover .level2:before {
+			border-bottom-color: $color-mediumblue;
+			-webkit-transition-delay: 0.2s;
+			-moz-transition-delay: 0.2s;
+			-o-transition-delay: 0.2s;
+			-ms-transition-delay: 0.2s;
+			transition-delay: 0.2s;
+		}
+
+		.mainNav .level2 a {
+			display: block;
+			padding: 0.3em 4em 0.3em 1.5em;
+			background: $color-mediumblue;
+			color: #fff;
+		}
+
+		.mainNav .level2 a:hover,
+		.mainNav .level2 a:focus {
+			background: $color-mediumlightblue;
+		}
+
+		.metaNav {
+			text-align: right;
+			font-size: 13px;
+			font-size: 1.3rem;
+		}
+
+		.metaNav .cUnit {
+			display: inline-block;
+			overflow: visible;
+			margin: 0 0 0.5em;
+			padding: 0;
+		}
+		.navHolder .metaNav .cUnit {
+			margin: 0;
+		}
+
+		.metaNav ul,
+		.metaNav li,
+		.metaNav .searchBox,
+		.metaNav .oneLineForm {
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		.metaNav a {
+			display: block;
+			margin-right: 0.8em;
+			color: $color-darkblue;
+		}
+
+		.metaNav a:hover,
+		.metaNav a:focus {
+			text-decoration: underline;
+		}
+
+		.metaNav input[type="text"],
+		.metaNav select {
+			width: 10em;
+		}
+
+		@media screen and (max-width: $sm-max) {
+
+			.topbar {
+				height: 25px;
+				background-size: cover;
+			}
+
+			.mainHeader {
+				padding: 2rem 2rem 0;
+				min-height: 0;
+			}
+
+			.logo {
+				margin-bottom: 0.5em;
+				display: inline-block;
+				float: none;
+				width: auto;
+			}
+
+			.menuToggle {
+				/*
+				display: block;
+				*/
+			}
+
+			.navHolder {
+				display: none;
+				overflow: hidden;
+				position: relative;
+				clear: both;
+				margin: 0 -2rem;
+				background: $color-mediumlightblue;
+			}
+
+			.navHolder:before {
+				position: absolute;
+				border: 8px solid transparent;
+				border-bottom-color: $color-mediumlightblue;
+				content: "";
+				top: -15px;
+				right: 2em;
+			}
+
+			.navHolder .nav {
+				text-align: left;
+			}
+
+			.mainNav,
+			.metaNav .cUnit > ul {
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				-ms-box-sizing: border-box;
+				box-sizing: border-box;
+				position: static;
+				float: left;
+				width: 50%;
+				margin: 0;
+			}
+
+			.mainNav {
+				border-right: 1px solid $color-mediumblue;
+			}
+
+			.mainNav li {
+				margin: 0;
+			}
+
+			.metaNav .cUnit {
+				display: block;
+			}
+
+			.navHolder .iBlock,
+			.navHolder .iList > li {
+				display: block;
+			}
+
+			.navHolder li > a {
+				display: block;
+				margin: 0;
+				border-width: 0;
+				padding: 0.5em 1em;
+				color: #fff;
+				font-weight: normal;
+			}
+
+
+			.navHolder .nav li > a,
+			.navHolder .nav li > a.active,
+			.navHolder .nav li > a:hover,
+			.navHolder .nav li > a:focus {
+				border-bottom: 1px solid $color-mediumblue;
+			}
+
+			.navHolder .nav li:last-child a {
+				border-bottom: none;
+			}
+
+			.navHolder .nav li:first-child > a {
+				border-top: none;
+			}
+
+			.navHolder .nav li > a.active {
+				color: #fff;
+				background: $color-mediumblue;
+			}
+
+			.navHolder .nav li > a:hover,
+			.navHolder .nav li > a:focus {
+				background: $color-lightblue;
+				color: #fff;
+			}
+
+			.mainNav .level2,
+			.mainNav li:hover .level2,
+			.mainNav li:focus .level2 {
+				// don't show level2 navigation in small screens 
+				display: none;
+			}
+
+			.metaNav {
+				font-family: $font-family-brand;
+				font-size: 18px;
+				font-size: 1.8rem;
+			}
+
+			.metaNav a:hover,
+			.metaNav a:focus {
+				text-decoration: none;
+			}
+
+			.navHolder .searchBox {
+				clear: both;
+				display: block;
+				padding: 1em;
+				background: $color-mediumblue;
+			}
+
+			.navHolder .searchBox input[type] {
+				width: 88%;
+			}
+
+			.navHolder .searchBox button {
+				width: 10%;
+				font-size: 0;// prevent new lines 
+			}
+
+			.navHolder .searchBox button .fontIcon{
+				font-size: 18px;
+				font-size: 1.8rem;
+			}
+		}
+
+//-- End mainHeader --
+
+
+//-- Start stickyHeader --
+
+	.stickyTopbar,
+	.stickyHeader {
+		position: fixed;
+		width: 100%;
+		// add translateZ to prevent continous repainting of sticky stuff 
+		-webkit-transform: translateZ(0);
+		transform: translateZ(0);
+	}
+
+	.stickyTopbar {
+		background: url(/images/bg-topbar.png) 50% 100% no-repeat;
+		height: 10px;
+		height: 1rem;
+		z-index: 1003;// underneath topbar, above mainHeader 
+	}
+
+	//-- Start small screens --
+
+		@media screen and (max-width: $sm-max) {
+
+			.stickyTopbar.onlyLarge {
+				display: none;
+			}
+
+		}
+
+	//-- End small screens --
+
+
+	.stickyHeader {
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;// prevent odd calculations in combination with max-width 
+		padding: 6px 60px 0;
+		padding: 0.6rem 4em 0;
+		top: 10px;
+		top: 1rem;
+		max-width: 75em;
+		background: #fff;
+		z-index: 1001;// underneath mainHeader, above main's shadow 
+	}
+
+	.stickyHeader .logo {
+		float: none;
+		display: inline-block;
+		width: auto;
+	}
+
+	//-- Start medium screens --
+
+		@media screen and (max-width: $md-max) {
+
+			.stickyHeader .mainNav > li {
+				font-size: 1.4rem;
+			}
+
+		}
+
+
+	//-- End medium screens --
+
+
+//-- End stickyHeader --
+
+
+//-- Start main --
+
+	.shadow {
+		overflow: hidden;
+		position: relative;
+		height: 10px;
+		margin-bottom: -10px;// makes margin  to h1 smaller (we want that), and makes flexslider fall over shadow 
+	}
+
+	.shadow:after {
+		border-radius: 50%;
+		bottom: 10px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.18);
+		content: "";
+		display: block;
+		height: 10px;
+		position: absolute;
+		width: 100%;
+	}
+
+	.breadcrumbsUnit {
+		padding-top: 10px;
+		padding-top: 1.0rem;
+		padding-bottom: 0;
+	}
+
+
+	//-- Start small screens --
+
+		@media screen and (max-width: $sm-max) {
+			// breadcrumb takes up too much space in small screens - just hide it 
+			.breadcrumbsUnit {
+				display: none;
+			}
+		}
+
+	//-- End small screens --
+
+	.breadcrumbsList {
+		white-space: nowrap;
+	}
+
+	.breadcrumbsList li {
+		overflow: hidden;
+		max-width: 70%;// necessary to enforce textoverflow for really long titles; this is not 100% correct: on smaller screens, the text will be cut off without ellipsis, on larger it may be clipped (with ellipsis) before the end of the line 
+		text-overflow: ellipsis;
+		padding: 0  0.25em 0 1em;
+		font-size: 1.2rem;
+		background: url(/images/rhdhv-icons.png) no-repeat 0 -84px;
+	}
+
+	.breadcrumbsList li:first-child {
+		padding-left: 0;
+		background: none;
+	}
+
+	.breadcrumbsList,
+	.breadcrumbsList a {
+		color: $color-textlightgrey;
+	}
+
+	.breadcrumbsList a:hover,
+	.breadcrumbsList a:focus {
+		text-decoration: underline;
+	}
+
+	//-- Start user info --
+
+		.userInfo {
+			font-size: 12px;
+			font-size: 1.2rem;
+			text-align: right;			
+		}
+
+		.userInfoList li {
+			margin: 0 0 0 1em;
+		}
+
+		.userInfoList a {
+			color: $color-theme;
+		}
+
+		.userInfoList a:hover,
+		.userInfoList a:focus {
+			color: $color-theme-hover;
+		}
+
+	//-- End user info --
+
+
+//-- End main --
+
+
+
+
+
+//-- Start factoids --
+
+	.factoidsBlock {
+		margin-top: 0;
+		padding-top: 0;
+		text-align: center;
+	}
+
+	.factoidsBlock img,
+	.rte .factoidsBlock img {
+		float: none;
+		max-width: 100%;
+		height: auto;
+	}
+
+//-- End factoids --
+
+
+//-- Start articles etc --
+
+	.date {
+		margin-bottom: 0.5em;
+		line-height: 1;
+		color: $color-textlightgrey;
+	}
+
+//-- End articles etc --
+
+
+//-- Start article calls to action --
+
+	.download.button .icon-download:before {
+		margin-right: 0.5em;
+	}
+
+	.ctaHolder .download.button {
+		margin-right: 2em;
+	}
+
+//-- End article calls to action --
+
+
+
+
+
+//-- Start forms, buttons and cta (call to action) --
+
+	fieldset {
+		margin-top: 1em;
+	}
+
+	.submitSet {
+		margin-top: 0;
+	}
+
+	legend {
+		margin-bottom: 1em;
+		color: $color-lightblue;
+	}
+
+	legend + .formList {
+		border-top: 1px solid $color-linelightgrey;
+	}
+
+	.formList .reqmark {
+		display: inline-block;
+		margin-left: 0.1em;
+		margin-right: -0.6em;
+		text-align: center;
+		width: 0.5em;
+	}
+
+	.labeledList > li {
+		margin: 1em 0;
+		padding-left: $form-indent-width;
+	}
+
+	// when labels before input fields - those are first childs of their parent-li */
+	.labeledList label:first-child {
+		display: inline-block;
+		margin-left: -1*$form-indent-width;
+		padding-top: calc(#{$input-padding-vert} + #{$input-border-width});
+		padding-right: 1em;
+		text-align: right;
+		width: 8.7em;// this leaves a 0.3em difference between margin-left and (width + padding-right) that is necessary to compensate the unwanted white space because of two inline elements on two separate lines in the code 
+		vertical-align: top;
+	}
+
+
+	input[type="text"],
+	input[type="email"],
+	input[type="url"],
+	input[type="password"],
+	select,
+	textarea {
+		box-sizing:border-box;
+		-ms-box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		-webkit-box-sizing:border-box;
+		border: $input-border-width solid $color-textverylightgrey;
+		padding: $input-padding-vert $input-padding-hor;
+		width: 15em;
+		color: $color-textgrey;
+	}
+
+	input[type="radio"],
+	input[type="checkbox"] {
+		margin-right: 0.3em;
+	}
+
+	input:focus,
+	select:focus,
+	textarea:focus {
+		border-color: $color-lightblue;
+	}
+
+	.formList input:focus,
+	.formList select:focus,
+	.formList textarea:focus {
+		background: rgba($color-lightblue, 0.1);
+	}
+
+	// @extend doesn't seem to work on placeholder, so use mixin instead
+	@mixin input-placeholder {
+		color: $color-textlightgrey;
+		font-style: italic;
+	}
+
+	::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	  @include input-placeholder;
+	}
+	::-moz-placeholder { /* Firefox 19+ */
+	  @include input-placeholder;
+	}
+	:-ms-input-placeholder { /* IE 10+ */
+	  @include input-placeholder;
+	}
+
+
+
+
+
+	//-- Start where two fields no longer fit alongside --
+
+		@media screen and (max-width: $lg-max) {
+			select + select {
+				margin-top: 1em;
+				margin-left: 0.3em;
+			}
+		}
+
+
+	//-- End where two fields no longer fit alongside --
+
+	option {
+		padding: 0.1em 0.3em;
+	}
+
+	.button {
+		padding: 0.5em 2em;
+		display: inline-block;
+		font-family: 'TheSans', verdana, helvetica, arial, sans-serif;
+	}
+
+	.ie7 .button {
+		display: inline;
+		zoom: 1;
+	}
+
+	.button:active {
+		box-shadow: inset 2px 2px 4px rgba(0,0,0,0.25);
+	}
+
+	.cta.button,
+	.ctaUnit .button {
+		color: #fff;
+		background: $color-theme;
+        cursor: pointer;
+	}
+
+	.cta.button:hover,
+	.cta.button:focus,
+	.ctaUnit .button:hover,
+	.ctaUnit .button:focus,
+	a:hover .cta.button,
+	a:focus .cta.button {
+		color: #fff;
+		background: $color-theme-hover;
+	}
+
+	//-- Start ctaUnit --
+
+		.ctaUnit .button {
+			overflow: hidden;
+			display: block;
+			padding: 1.4rem;
+		}
+
+		.ctaUnit .button h2,
+		.ctaUnit .button h3 {
+			color: #fff;
+		}
+
+		.ctaUnit .mediaBox {
+			width: 3.2rem;
+			margin: 0 1.0rem 0 0;
+		}
+
+		.ctaUnit .button .fontIcon {
+			margin: 0;
+			font-size: 2rem;
+		}
+
+		.ctaUnit .fontIcon:before {
+			display: inline-block;
+			margin-right: 0.3em;
+			padding: 0.3em;
+			background: #fff;
+			color: $color-theme;
+		}
+		
+		.ctaUnit :hover .fontIcon:before,
+		.ctaUnit :focus .fontIcon:before {
+			color: $color-theme-hover;
+		}
+
+	//-- End ctaUnit --
+
+	.button.secondary {
+		background: $color-backgroundblue;
+		color: $color-darkblue;
+	}
+
+	.button.secondary:hover,
+	.button.secondary:focus,
+	a:hover .button.secondary,
+	a:focus .button.secondary {
+		background-color: $color-lightblue;
+		color: #fff;
+	}
+
+	.button a {
+		color: #fff;
+	}
+
+	.button .fontIcon {
+		margin-left: -1em;
+	}
+
+	input[type="submit"].cta.button,
+	button.cta.button {
+		background-color: $color-theme;
+		border: 1px solid currentColor;
+	}
+
+	input[type="submit"].cta.button:hover,
+	input[type="submit"].cta.button:focus,
+	button.cta.button:hover,
+	button.cta.button:focus {
+		box-shadow: none;
+		background-color: $color-theme-hover;
+		border-color: $color-theme-hover;
+	}
+
+	input.error,
+	input.input-validation-error,
+	textarea.input-validation-error {
+		border-color: $color-error-red;
+	}
+
+	.choiceList {
+		display: inline-block;
+		vertical-align: top;
+		line-height: 1.6em;// 24/15 
+	}
+
+	.oneLineForm {
+		background-color: $color-backgroundblue;
+	}
+
+	.oneLineForm input[type] {
+		// adding type to selector prevents style from being overruled by media query 
+		display: inline-block;
+		border: none;
+		background-color: transparent;
+	}
+
+	.ie7 .metaNav .oneLineForm,
+	.ie7 .oneLineForm input[type] {
+		display: inline;
+		zoom: 1;
+	}
+
+	.oneLineForm button {
+		// button with icon in it 
+		padding: 0.3em 0.6em;
+		background: none;
+		color: $color-mediumblue;
+	}
+
+	.oneLineForm button:hover,
+	.oneLineForm button:focus,
+	.no-generatedcontent .oneLineForm button {
+		// button with icon in it 
+		background-color: #00567d;// rhdhv darkblue 
+		color: #fff;
+	}
+
+	input + input[type="submit"].cta.button, button.cta.button {
+		// regular button with text give same padding and border as text input 
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		box-sizing: border-box;
+		padding: 0.3em 2em;
+		vertical-align: top;
+	}
+
+	.button[type="submit"][disabled="disabled"],
+	.button[type="submit"][disabled="disabled"]:hover,
+	.button[type="submit"][disabled="disabled"]:focus {
+		color: rgba(255,255,255,0.5);
+		background-color: $color-lightblue;
+		border: 1px solid $color-lightblue;
+		cursor: default;
+	}
+
+	#cboxLoadedContent .lightboxForm {
+		margin: 0 2em;
+		min-width: 10em;
+		background: #fff;
+	}
+
+	#cboxLoadedContent .formList {
+		padding-right: 2em;
+	}
+
+	//-- Start social media login --
+
+		.button.socialMedia .fontIcon:before {
+			// social media login button (i.e. linkedIn) 
+			margin: 0 1em 0 -0.2em;
+			border-right: 1px solid #fff;
+			border-right-color: rgba(255,255,255,0.5);
+			padding: 1em 1em 1em 0;
+		}
+
+		.socialMediaSignin .fancySeparator {
+			height: 9em;
+			border-left: 1px solid $color-textverylightgrey;
+		}
+
+		.socialMediaSignin .orText {
+			display: inline-block;
+			margin: 3.2em 0 0 -0.5em;
+			padding: 0.2em 0;
+			background: #fff;
+		}
+
+		.socialMediaSignin .button.socialMedia {
+			margin: 3em 0 0 3em;
+			background: $color-theme;
+		}
+
+		.socialMediaSignin a:hover.button.socialMedia,
+		.socialMediaSignin a:focus.button.socialMedia {
+			background: $color-theme-hover;
+		}
+
+		//-- Start small screens --
+
+			@media screen and (max-width: $sm-max) {
+
+				.socialMediaSignin .fancySeparator {
+					display: block;
+					height: auto;
+					border-top: 1px solid $color-textverylightgrey;
+					border-left: none;
+				}
+
+				.socialMediaSignin .orText {
+					display: block;
+					margin: -1em auto 0;
+					width: 2em;
+					padding: 0;
+					text-align: center;
+				}
+
+				.socialMediaSignin .button.socialMedia {
+					margin-left: 0;
+				}
+
+			}
+
+		//-- End small screens --
+
+
+	//-- End social media login --
+
+	//-- Start explanation and feedback --
+
+		form .instruction,
+		form .explanation {
+			color: $color-textlightgrey;
+		}
+
+		form .explanation,
+		form .field-validation-error {
+			display: block;
+			padding: 0 0.3em;// same as input 
+		}
+
+		form .field-validation-error,
+		form .explanation.error {
+			color: $color-error-red;
+		}
+
+		.validation-summary-errors {
+			padding: 1em;
+			background: $color-bg-pink;
+			color: $color-error-red;
+
+			a {
+				color: $color-error-red;
+				font-weight: bold;
+				text-decoration: underline;
+
+				&:hover,
+				&:focus {
+					text-decoration: none;
+				}
+			}
+		}
+
+		.validation-summary-errors ul {
+			display: none;
+		}
+
+		.validation-summary-valid {
+			display: none;
+		}
+
+	//-- Start explanation and feedback --
+
+
+
+	//-- Start small screens --
+
+		@media screen and (max-width: $sm-max) {
+
+			.labeledList > li {
+				padding-left: 0;
+			}
+
+			.labeledList label,
+			.labeledList label:first-child {
+				display: block;
+				margin: 0;
+				width: auto;
+				padding: 0;
+				text-align: left;
+			}
+
+			input[type="radio"]+label,
+			input[type="checkbox"]+label {
+				display: inline-block;
+			}
+
+			input[type="text"],
+			input[type="email"],
+			input[type="url"],
+			input[type="password"],
+			select,
+			textarea {
+				display: block;
+				width: 100%;
+			}
+
+			select + select {
+				margin-left: 0;
+			}
+
+
+		}
+
+	//-- End small screens --
+
+//-- End forms, buttons and cta (call to action) --
+
+
+
+
+
+
+.moreBlock {
+	margin: 0 20px;// same hor dimensions as cUnit 
+	margin: 0 2rem;
+	padding: 10px 20px;// same hor dimensions as cUnit 
+	padding: 1 2rem;
+}
+
+.cUnit + .moreBlock {
+	border-top: 1px solid $color-backgroundblue;
+}
+
+.cUnit .moreBlock {
+	margin: 1em 0 0;
+	padding: 0;
+}
+
+a.more,
+a .more {
+	color: $color-theme;
+}
+
+a.more:hover,
+a.more:focus,
+a:hover .more,
+a:focus .more {
+	color: $color-theme-hover;
+	text-decoration: underline;
+}
+
+a.button:hover,
+a.button:focus,
+a:hover .button,
+a:focus .button {
+	color: #fff;
+	text-decoration: none;
+}
+
+.mapBox {
+	height: 250px;
+	// put a background image here for when the map is loading? 
+}
+
+.largeMap .mapBox {
+	height: 400px;
+}
+
+.mapBox.altContent {
+	height: auto;
+}
+
+.mapBox.altContent img {
+	width: 100%;
+	height: auto;
+}
+
+
+//-- Start offices --
+
+	.officeBlock .mediaBox {
+		// TODO: re-enable when we have 3 cols in office block 
+		//float: none;
+	}
+
+	//-- Start small screens --
+
+		@media screen and (max-width: $lg-max) {
+
+			.officeBlock .mediaBox {
+				float: none;
+			}
+
+		}
+
+
+	//-- End small screens --
+
+	.officesOverview ul {
+		-webkit-column-count: 3;
+		-moz-column-count: 3;
+		column-count: 3;
+	}
+
+//-- End offices --
+
+
+//-- Start margin-compensation replaced elements sideCol --
+
+	/* The margin between h2 and img or video appears smaller
+	than the margin between h2 and p (because of whitespace above p)
+	so add some extra margin */
+
+	.sideCol h2 + p > a:first-child > img:first-child {
+		margin-top: 10px;
+		margin-top: 1.0rem;
+	}
+
+//-- End margin-compensation replaced elements sideCol --
+
+
+//-- Start pager --
+
+	.pager {
+		text-align: center;
+		font-size: 16px;
+		font-size: 1.6rem;
+		color: $color-textverylightgrey;
+	}
+
+	.pager:last-child {
+		margin-bottom: 1em;
+	}
+
+	.pager .prev,
+	.pager .next {
+		vertical-align: middle;
+	}
+
+	.pager ol {
+		padding-left: 0;
+	}
+
+	.pager li {
+		vertical-align: middle;
+	}
+
+	.pager a {
+		color: $color-textlightgrey;
+	}
+
+	.pager a:hover,
+	.pager a:focus {
+		color: $color-mediumblue;
+	}
+
+	.pager li a {
+		display: block;
+		width: 2em;
+		height: 2em;
+		color: $color-mediumblue;
+	}
+
+	.pager li a:hover,
+	.pager li a:focus {
+		background-color: $color-backgroundblue;
+	}
+
+	.pager li.active a {
+		background: $color-lightblue;
+		color: #fff;
+	}
+
+//-- End pager --
+
+
+
+//-- Start search results --
+
+	.searchResults .searchBox {
+		margin: 2em 0;
+	}
+
+	.searchResultCount {
+		color: $color-textlightgrey;
+	}
+
+  .searchFilter {
+      padding: 1em 0;
+      border-top: 1px solid $color-backgroundblue;
+      border-bottom: 1px solid $color-backgroundblue;
+  }
+
+  .searchFilter > label {
+      margin-right: 1em;
+  }
+
+
+	.searchResultsList {
+		margin-bottom: 2em;
+	}
+
+	.searchResultsList > li {
+		margin: 1em 0 2em;
+	}
+
+	.search-result__title {
+		&::before {
+			@include heading-dash;
+		}
+
+		&::after {
+			display: none;
+		}
+	}
+
+  .search-result-others__count {
+    margin-left: 0.2em;
+    color: $color-textlightgrey;
+
+    &::before {
+    	content: '(';
+    }
+
+    &::after {
+    	content: ')';
+    }
+  }
+
+
+
+//-- End search results --
+
+
+
+//-- Start downloads list --
+
+	.downloadsList li {
+		overflow: hidden;
+		border-bottom: 1px solid $color-linelightgrey;
+	}
+
+	.downloadsList li:first-child {
+		border-top: 1px solid $color-linelightgrey;
+	}
+
+	.downloadsList .blockLink {
+		overflow: hidden;
+		padding: 0.7em 0;
+	}
+
+	.downloadsList .date {
+		font-size: 1.4rem;
+		font-weight: bold;
+		color: $color-textgrey;
+	}
+
+	.downloadsList .button {
+		float: right;
+	}
+
+//-- End downloads list --
+
+
+//-- Start sitemap --
+
+	.sitemap {
+		overflow: hidden;
+	}
+
+	.sitemapCol {
+		float: left;
+		width: 50%;
+		min-width: 12em;
+	}
+
+	.sitemap ul ul {
+		margin-left: 1em;
+	}
+
+	.sitemap h2,
+	.sitemap h2:first-child,
+	.sitemap .h2,
+	.sitemap .h2:first-child,
+	.sitemap h3,
+	.sitemap h3:first-child,
+	.sitemap .h3,
+	.sitemap .h3:first-child {
+		margin: 0.5em 0 0;
+	}
+
+	.countriesSitemap h2.h1 {
+		margin: 0 0 2.6rem;
+	}
+
+	.sitemap .h3 {
+		font-family: 'TheSans', verdana, helvetica, arial, sans-serif;
+		line-height: $line-height-default;
+	}
+
+	.sitemap h3 + ul a {
+		// level of specific markets 
+		color: $color-textgrey;
+	}
+
+	.countriesSitemap a.language {
+		color: $color-textlightgrey;
+	}
+
+	.sitemap a:hover,
+	.sitemap a:focus {
+		text-decoration: underline;
+	}
+
+	.sitemap h4,
+	.sitemap .h4 {
+		font-size: $font-size-default;
+		line-height: $line-height-default;
+		text-transform: none;
+
+		a {
+			font-weight: normal;
+		}
+	}
+
+//-- End sitemap --
+
+
+
+
+//-- Start faq --
+
+	.faqList h3 {
+		border-top: 1px solid $color-backgroundblue;
+		padding-top:20px;
+		padding-top: 2.0rem;
+	}
+
+	.faqList li:first-child h3 {
+		border-top: none;
+	}
+
+	.faqAnswer {
+		margin-bottom: 1em;
+	}
+
+//-- End faq --
+
+
+
+
+
+//-- Start secureLinks --
+
+	.secureLinkWarning {
+		padding: 0 1em;
+		width: 30em;
+	}
+
+//-- Start small screens --
+
+	@media screen and (max-width: $xs-max) {
+		.secureLinkWarning {
+			width: 15em;
+		}
+	}
+
+//-- End small screens --
+
+//-- End secureLinks --
+
+
+
+
+//-- Start big screens --
+
+	@media screen and (min-width: $md-min) {
+
+	}
+
+//-- End big screens --
+
+
+.clearfix {
+	// commented out - does not seem te be used anywhere 
+	/*clear: both;
+	line-height: 0;
+	font-size: 0*/
+}
+
+.noresults {
+  display: none;
+}
+
+
+/*
+    this is used in comment form
+    http://stackoverflow.com/questions/17915281/is-setting-a-hidden-field-efficient-against-bot
+*/
+.formList #username {
+    display: none;
+}

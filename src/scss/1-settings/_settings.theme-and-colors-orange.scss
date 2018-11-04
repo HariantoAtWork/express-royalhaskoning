@@ -1,0 +1,11 @@
+// define this theme's colors
+	$color-theme-orange: #f7941e;// nereda orange
+	$color-theme-hoverorange: #e37b00;// nereda hoverorange
+
+// map default theme colors to this theme's colors
+	$color-theme: $color-theme-orange;
+	$color-theme-hover: $color-theme-hoverorange; 
+
+// branding images etc
+	$footer-bg-image: '/images/themes/orange/bg-footer.jpg';
+	$color-footer-bg: $color-mediumblue;

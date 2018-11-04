@@ -1,0 +1,28 @@
+/////////////////////////
+////
+////  ORANGE THEME STYLESHEET
+////
+////  this imports all scss files necessary for the complete orange theme.
+////
+/////////////////////////
+
+@import "app-before-themes";
+@import "1-settings/settings.theme-and-colors-orange";
+
+// only in Nereda, we have small supertitle "my nereda" above sign in
+// to prevent that subtitle to touch the top of the viewport,
+// we want some more space above it. the main-links won't be centered then,
+// 
+.main-header--is-sticky {
+	.main-nav a {
+		padding-top: 0.7em;
+		padding-bottom: 0.1em;
+	}
+
+	.pageWrapper & a.logo {
+		// we need the a for specificity
+		margin-top: 12px;
+	}
+}
+
+@import "app-after-themes";

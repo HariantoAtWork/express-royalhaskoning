@@ -1,35 +1,10 @@
-body {
-  padding: 50px;
-  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
-}
+/////////////////////////
+////
+////  APP STYLESHEET
+////
+////  Default stylesheet - this imports all scss files necessary for default theme.
+////
+/////////////////////////
 
-aside {
-  background-color: #e5edf0;
-}
-
-.section-vacancies {
-}
-
-.section-vacancies {
-  background-color: white;
-
-  .filterBox {
-    h3 {
-      font-size: 26px;
-      font-weight: bold;
-      color: #00577e;
-    }
-
-    h4 {
-      font-size: 20px;
-      font-weight: 600;
-      color: #4b4b4b;
-      margin-bottom: 4px;
-    }
-  }
-
-  h2 {
-    margin-top: 0.9em;
-    font-size: 26px;
-  }
-}
+@import "app-before-themes";
+@import "app-after-themes";

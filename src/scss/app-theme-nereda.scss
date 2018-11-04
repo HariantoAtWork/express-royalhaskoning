@@ -1,0 +1,14 @@
+/////////////////////////
+////
+////  ORANGE THEME STYLESHEET
+////
+////  this imports all scss files necessary for the complete Nereda theme.
+////  This theme is exactly the same as the orange theme, but we needed a separate nereda theme since the favicon is bound to that specific theme.
+////  a technical debt issue has been created to fix that.
+////
+/////////////////////////
+
+@import "app-before-themes";
+@import "1-settings/settings.theme-and-colors-orange";
+@import "app-after-themes";
+

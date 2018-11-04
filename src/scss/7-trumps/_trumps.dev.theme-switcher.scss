@@ -1,0 +1,9 @@
+.theme-switcher {
+	position: absolute;
+	z-index: 100000;
+	right: 1em;
+	top: calc(100vh - 13em);
+	border: 2px solid $color-almostblack;
+	padding: 1em;
+	background: #ffc;
+}

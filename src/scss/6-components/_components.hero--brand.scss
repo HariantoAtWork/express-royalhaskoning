@@ -1,0 +1,286 @@
+/*
+* Brand Hero component (huge image with heading and optional text and button and brand)
+*
+* Styling was started with the nicest version first, later it became apperent that we
+* could also use that as the base for the simpler versions. In hindsight, it would
+* have been better to do the basic version first and extend on that.
+*/
+
+.hero--brand {
+	
+	width: 100%;
+	height: auto;
+	min-height: 0;
+	max-height: none;
+	position: relative;
+
+	.js-hero__image-src {
+		position: absolute;
+		top:0;
+		left:0;
+	}
+
+	.hero__container {
+	
+		@include mq-max(md) {
+			display: flex;
+			flex-direction: column;
+			min-height: 50vh;
+		}
+		
+		@include mq-min(lg) {
+			min-height: 65vh;	
+		} 
+	
+		@include mq-min(xl) {
+			display: flex;
+			flex-direction: row;
+		}
+	}
+
+    .hero__title-wrapper {
+		z-index: 1;
+		opacity:0;  /* make things invisible upon start */
+		transition: opacity 0.5s $hero-image-transition-duration ease-out;
+		position: relative;
+
+		@include mq-only(lg) {
+			width:65%;
+		}
+
+		@include mq-min(xl) {
+			min-height: 65vh;	 
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-end;
+			align-items: center;
+			background: url('/images/brandhero-shape_xl.png') no-repeat 100% 100%;
+			background-size: cover;
+		}
+
+		@include mq-min(lg) {
+			width: 50%;
+		}
+
+
+		@include mq-min(1400px) {
+			width: 40%;
+		}
+
+		&:after {
+			@include mq-max(md) {
+                content: "";
+				display: block;
+				background: url('/images/brandhero-shape_small.png') no-repeat;
+                background-size: contain;
+                width: 100%;
+                height: 0;
+                padding-top: 9.6875%; //To keep image in the right ratio 
+			}
+		}
+
+		@at-root .is-loaded#{&} {
+			opacity: 1; /* make things visible if loaded */
+		}
+    }
+
+    .hero__title {
+		color: $color-mediumblue;
+		margin: 0;
+		font-style: italic;
+		text-transform: none; 
+		text-shadow: none;
+		box-shadow: 0;
+
+		
+		@include mq-max(md) {
+			padding: 2rem 4rem;
+			background: $color-white;
+		}
+
+		@include mq-max(md) {
+			font-size: $font-size-xxl;
+		}
+
+		@include mq-only(lg) {
+			padding: 6rem 5rem 10rem 2rem;
+			background: url('/images/brandhero-shape_medium.png') right bottom no-repeat;
+			background-size: cover;
+			font-size: 	$font-size-xxl; 
+		}
+
+		@include mq-min(xl) {
+			text-align: right; 
+			max-width: 50rem;
+			padding: 6rem 10rem 15rem 2rem; 
+			font-size: $font-size-xxl; 
+		}
+
+		@include mq-min(1024px) {
+			font-size: 5rem;
+		}
+
+		@include mq-min(1200px) {
+			font-size: $font-size-3xl;
+		}
+
+		@include mq-min(1400px) {
+			font-size: $font-size-3xl;
+		}
+
+		// for the transparant header on the homepage
+        // Turned off because of design changes
+		.pg-homepage & {
+			@media all and (min-width:$breakpoint-header) and (max-width: $lg-max) {
+				//padding-top: 11rem;
+			}
+			@include mq-min(xl) {
+				//padding-top: 14rem; 
+			}
+		}
+	}
+	
+    .hero__content-wrapper {
+		text-shadow: 0 0 10px black;
+		z-index: 1;
+		opacity:0;  /* make things invisible upon start */
+		transition: opacity 0.5s 1s ease-out;
+		position: relative;
+
+		@include mq-max(md) {
+			margin-top: auto;
+			padding: 4rem;
+		}
+
+		@include mq-only(lg) {
+			padding: 4rem;
+			width: 65%;
+			margin-left: auto;
+		}
+		
+		@include mq-min(xl) {
+			flex: 1;
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			align-items: center;
+		}
+
+		.pg-homepage & {
+			@include mq-min(xl) {
+				padding-top: 14rem; // for the transparant header on the homepage
+			}
+		}
+
+		@at-root .is-loaded#{&} {
+			opacity: 1; /* make things visible if loaded */
+		}
+    }
+
+    .hero__content {
+		color: $color-white;
+
+		@include mq-max(md) {
+		}
+
+		@include mq-min(xl) {
+			flex: 1;
+			max-width: 50rem; 
+			padding-top: 5rem;
+			margin-bottom: 5rem; 
+		}
+
+		.button {
+			text-shadow: none;
+		}
+    }
+
+    .hero__subtitle {
+		margin: 0;
+		color: inherit;
+		font-style: italic;
+		text-transform: none; 
+		margin: 0 0 .5em;
+
+
+		
+		@include mq-min(1024px) {
+			font-size: 5rem;
+		}
+
+		@include mq-min(1200px) {
+			font-size: $font-size-3xl;
+		}
+
+		@include mq-min(1400px) {
+			font-size: $font-size-3xl;
+		}
+
+
+	}
+	
+    .hero__description {
+		color: inherit;
+	}
+	.hero__scroll-indicator {
+
+		@include mq-min(lg) {
+			display: block;
+			position: absolute;
+			z-index: 0;
+			bottom: 1em;
+			font-size: $font-size-tiny;
+			z-index: 1;
+
+			@include mq-min(xl) {
+				font-size: $font-size-default;
+			} 
+
+			// position of scroll indicator is dependent on whether caption is present or not
+			// if no caption, align with left side of small column
+			$circle-correction: 0.2em;// correction to make circle look aligned (while it is really a bit to the left)
+			left: calc(66.67% + #{$grid-margin-hor} + #{$grid-padding-hor} - #{$circle-correction});
+				
+
+
+			&::after {
+				@include subtly-darker-background;
+				color: rgba(0,0,0,0.3);
+				box-shadow: 0 0 20px 20px currentColor;
+			}
+
+			@keyframes bounce {
+				0%, 100% {	transform: translateY(0); }
+				50% {				transform: translateY(0.2em);	}
+			}
+
+			a {
+				display: inline-block;
+				position: relative;
+				color: $color-white;
+
+				.fontIcon {
+					margin-right: 0.5em;
+					&::before {
+						// already has icon in its content-property
+						display: inline-block;
+						border: 2px solid $color-white;
+						border-radius: 50%;
+						padding: 0.5em;
+					}
+				}
+
+				&:hover,
+				&:focus {
+					.fontIcon::before {
+						animation: bounce 0.6s;
+						animation-iteration-count: 2;
+					}
+				}
+			}// a
+
+		}// @include mq-min(lg)
+
+	}// hero__scroll-indicator	
+
+}

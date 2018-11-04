@@ -1,0 +1,13 @@
+/////////////////////////
+////
+////  BLUE THEME STYLESHEET
+////
+////  this imports all scss files necessary for the complete blue theme.
+////
+/////////////////////////
+
+@import "app-before-themes";
+@import "1-settings/settings.theme-and-colors-gray";
+@import "app-after-themes";
+
+@import "4-elements/theme.gray.elements";

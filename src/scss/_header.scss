@@ -1,0 +1,932 @@
+$logo-regular-star-width: 32px;// width of left side logo until start of text in logo
+$logo-regular-star-width: 46px;// width of left side logo until start of text in logo
+$logo-home-star-width: 57px;// width of left side logo until start of text in logo on the homepage
+$tweakpoint-header-main-nav-font-size: 70em;// from this point up, main-nav has full font size
+$sticky-header-animation-duration: 200ms;
+$sticky-header-animation-delay: 0ms;
+
+// classes for stuff that's only visible or hidden after breakpoint header
+	.visible-breakpoint-header {
+		display: none;
+
+		@include mq-min($breakpoint-header) {
+			display: initial;
+		}
+	}
+
+	.hidden-breakpoint-header {
+		@include mq-min($breakpoint-header) {
+			display: none;
+		}
+	}
+
+.main-header {
+	@extend %clearfix;
+	position: relative;// fallback
+	position: sticky;
+	top: 0;
+	z-index: $z-index-header;
+	padding: 1.25em 0;
+	width: 100%;
+	background: $color-white;
+	font-family: $font-family-brand-bold;
+	transition: padding $sticky-header-animation-duration $sticky-header-animation-delay,
+							background-color $sticky-header-animation-duration $sticky-header-animation-delay;
+
+	* {
+		box-sizing: border-box;
+	}
+}
+
+// Turned off because of design changes
+.pg-homepage .main-header {
+	// on small screens, position should be sticky on homepage too (as opposed to it being fixed on wider screens)
+	// IE does not support sticky; so we'll add fixed as a fallback for small views in IE
+	// this doesn't really matter, since this will only occur on desktops/laptops with IE, not on actual small screens.
+	//position: fixed;
+	//position: sticky;
+
+	// header is only transparent on wide homepage (and then only when it's not sticky)
+	@media screen and (min-width: $breakpoint-header) {
+		//position: fixed;// position: sticky reserves space for the sticky element when it's taken out of the flow; on the homepage, the header has position:absolute, so it is already out of the flow and giving it position: sticky would insert unwanted space. position:fixed does not insert spacing.
+		//z-index: $z-index-header;
+		//width: 100%;
+
+		&--is-top {
+		//	background-color: transparent;// fallback
+		//	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.25) 60%, transparent 100%);
+		}
+	}
+
+}
+
+//-- Start logo and header__menu-toggle 
+
+	// adding animation to logo or logo__img for sticky state isn't worth the effort, because it all happens really quick, so it appears to be animated already :)
+	.logo {
+		display: block;
+		width: 13rem;
+		max-width: 251px;// width of image
+		line-height: 0;
+	}
+
+	.logo__img--regular {
+		margin-top: -9px;
+		margin-left: RemToPx($grid-margin-hor + $grid-padding-hor) - $logo-regular-star-width;// make text in logo align with page text
+	}
+
+	.logo__img--home {
+		display: none;// by default: hide transparent logo and show regular logo
+
+		@include mq-min(72em) {
+			// when screen is wide enough, align logo with text below. tweakpoint determined by trial and error.
+			margin-left: RemToPx($grid-margin-hor + $grid-padding-hor) - $logo-home-star-width;// make text in logo align with page text
+		}
+	}
+
+	@media screen and (min-width: $breakpoint-header) {
+		.logo {
+			float: left;
+			width: 20%;
+		}
+
+        .pg-homepage .main-header--is-top {
+            // Turned off because of design changes
+            // on homepage when header is transparent, swap regular logo for one with white text on larger screens
+            .logo__img--home {
+              //  display: block;
+            }
+
+            .logo__img--regular {
+              //  display: none;
+            }
+        }
+	}// @media
+
+	.logo img.onlyLarge {
+		margin-left: -14px;// somehow, 30px is too far to the left? 
+		margin-left: -3rem;
+	}
+
+//-- End logo 
+
+
+//-- Start header__menu-toggle 
+
+	.header__menu-toggle {
+		// only position styles here - font-styles defined with main-nav 
+		position: relative;
+		float: right;
+		z-index: 1;
+
+		@include mq-max($breakpoint-header - 0.001) {
+			.toggle.expanded {
+				.icon-menu:before {
+					content: 'C';//icon-close (can't use @extend within media-query)
+				}
+			}
+		}
+
+		@include mq-min($breakpoint-header) {
+			// on larger screens, hide the toggle when secondary-nav is expanded
+			// and show the one in the secondary-nav
+			.toggle {
+				opacity: 1;
+				transform: translate(0, 0);// IE9
+				transform: translate3d(0,0,0);
+				transition: opacity 0.15s, transform 0.15s;
+			
+				&.expanded {
+					opacity: 0;
+					transform: translate(3vw, -20px);// IE9
+					transform: translate3d(3vw, -20px, 0) scale(0.7);
+				}
+			}
+
+		}// @media
+
+	}// .header__menu-toggle
+
+	.menu-toggle__text {
+		margin-left: 0.3em;
+	}
+
+//-- End header__menu-toggle 
+
+
+//-- Start main-nav --
+
+	$panel-gradient: linear-gradient($color-panel-gradient-top, $color-panel-gradient-top 44%, transparent 55%, transparent 0),
+									linear-gradient(160deg, $color-panel-gradient-top, $color-panel-gradient-top 50%, transparent 0),
+									linear-gradient(to top, $color-panel-gradient-bottom, $color-panel-gradient-bottom 30%, transparent 70%, transparent);
+
+	.main-nav {
+		// toggling behaviour defined below 
+		position: absolute;
+		overflow-x: hidden;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+		top: 9rem;// on small screens
+		width: 100%;
+		z-index: $z-index-main-nav;
+		background-color: $color-panel-gradient-top;
+		background-image: $panel-gradient;
+
+		.c-overlay {
+			display: none;
+		}
+
+		.main-header--is-sticky & {
+			top: 5.2rem;
+			// height: calc(100vh - 5.2rem);
+		}
+	}
+
+
+
+	@media screen and (min-width: $breakpoint-header) {
+		// on wider screens, only secondary nav has background
+		.main-nav {
+			position: static;
+			background: transparent;
+			overflow: visible;
+
+			.c-overlay {
+				display: block
+			}
+		}
+	}
+
+	// we want to have same padding with different font-sizes, so use rems
+	$flyout-nav-padding-top: 3.0rem;
+	$flyout-nav-padding-bottom: 0.4rem;
+	$flyout-nav-padding-hor: 2.4rem;
+
+	.main-nav a,
+	.header__menu-toggle a {
+		display: block;
+		padding: 0.5em $flyout-nav-padding-hor;
+		font-size: $font-size-m-px;
+		font-size: $font-size-m-px;
+	}
+
+
+	$nav-border: 1px solid rgba(255, 255, 255, 0.3);
+
+	.main-nav a {
+		position: relative;
+		color: $color-white;
+		border-bottom: $nav-border;
+		background: transparent;
+		transition: 0.1s ease-out;
+
+		&:hover,
+		&:focus {
+			// background: rgba($color-white, 0.15);
+			background: linear-gradient(to left, rgba(255,255,255,0.2), transparent 70%);
+		}
+	}
+	
+
+	//-- Start primary-nav --
+
+		.primary-nav,
+		.header__menu-toggle {
+			text-transform: uppercase;
+			letter-spacing: 0.06em;
+		}
+
+		.primary-nav {
+			overflow: hidden;
+
+			@include mq-max($breakpoint-header-max) {
+				margin-top: 3.6em;
+			}
+		}
+
+
+		// define mixin for primary-nav hover effect
+		@mixin primary-nav-hover-effect {
+				border-bottom: none;
+				color: $color-mediumblue;
+				transition: color $sticky-header-animation-duration;
+
+				$hover-transition: 0.2s ease-out;
+
+				&::after {
+					display: block;
+					content: '';
+					bottom: 0;
+					left: 0;
+					border-top: 4px solid $color-theme;
+					width: 100%;
+					height: 0;
+					opacity: 0;
+					transform: translateY(-0.5em) scaleX(0.8);
+					transition: opacity $hover-transition, transform $hover-transition;
+				}
+					
+				&:hover,
+				&:focus {
+					background: transparent;
+
+					&::after {
+						opacity: 1;
+						transform: translateY(-0.1em) scaleX(1);
+					}
+				}
+		}// mixin primary-nav-hover-effect
+
+
+		.primary-nav a,
+		.header__menu-toggle a {
+			@include mq-min($breakpoint-header) {
+				padding-left: 0.6em;
+				padding-right: 0.6em;
+				font-size: $font-size-default-px;
+				font-size: $font-size-default-px;
+			}
+
+			@include mq-min($tweakpoint-header-main-nav-font-size) {
+				padding-left: $flyout-nav-padding-hor;
+				padding-right: $flyout-nav-padding-hor;
+				font-size: $font-size-m-px;
+				font-size: $font-size-m-px;
+			}
+		}
+
+		.primary-nav .primary-nav__icon-link,
+		.header__menu-toggle a {
+			@include mq-min($breakpoint-header) {
+				padding-left: 0.5em;
+				padding-right: 0.5em;
+			}
+
+			@include mq-min($tweakpoint-header-main-nav-font-size) {
+				padding-left: $flyout-nav-padding-hor/2;
+				padding-right: $flyout-nav-padding-hor/2;
+			}
+		}
+
+		.header__menu-toggle a {
+			@include primary-nav-hover-effect;
+		}
+
+		.main-nav .primary-nav__search {
+			// .main-nav selector is necessary for specificity
+			display: none;// hide search link on small screens; form is already visible there
+
+			@include mq-min($breakpoint-header) {
+				display: block;
+			}
+		}
+
+		.primary-nav,
+		.secondary-nav {
+			.has-sub-nav {
+				// move border from a to li (in hindsight, it would have been better to do this for all a's, but there wasn't enough time to repair this)
+				border-bottom: $nav-border;
+
+				& > a {
+					border-bottom: none;
+				}
+			}
+
+		}
+
+		.primary-nav__country {
+
+			@media all and (min-width: 75em) {
+				&.primary-nav__country {
+					// increase specificity to overrule .main-nav a
+					display: inline-flex;
+					flex-wrap: wrap;
+					align-items: center;
+				}
+			}
+
+			.fontIcon {
+				@extend %sub-nav-toggle-icon-style;
+
+				@include mq-min($breakpoint-header) {
+					div & {// add div-selector for specificity
+						float: none;
+						&:before {
+							content: "G";
+						}
+					}
+				}
+			}
+
+			&__current {
+				display: block;
+				font-size: $font-size-tiny-px;
+				font-size: $font-size-tiny;
+				
+
+				@include mq-min($breakpoint-header) {
+					display: none;
+				}
+
+				@media all and (min-width: 75em) {
+					max-width: 7em;
+					font-size: $font-size-tiny-px;
+					font-size: $font-size-tiny;
+					color: $color-textlightgrey;
+					line-height: 1;
+					text-align: left;
+					display: inline-block;
+				}
+			}
+		}
+
+		.pg-homepage {
+            // Turned off because of design changes
+			.main-header--is-top {
+				.primary-nav__country__current {
+					//color: rgba(255, 255, 255, 0.7);
+				}
+			}
+		}
+
+		@media screen and (min-width: $breakpoint-header) {
+			.primary-nav__list,
+			.header__menu-toggle {
+				margin-top: 18px;
+				text-align: right;
+
+				transition: margin-top $sticky-header-animation-duration $sticky-header-animation-delay;
+			}
+
+			.primary-nav__list-item {
+				display: inline-block;
+			}
+
+			.primary-nav a,
+			.header__menu-toggle a {
+				@include primary-nav-hover-effect;
+
+				.pg-homepage {
+                    // Turned off because of design changes
+					.main-header--is-top & {
+						&::after {
+							//border-top: 4px solid currentColor;
+						}
+						
+						&:hover,
+						&:focus {
+							&::after {
+								//opacity: 0.3;
+							}
+						}
+					}
+				}
+
+			}// .primary-nav a
+
+			.pg-homepage {
+                // Turned off because of design changes
+				.main-header--is-top {
+					.primary-nav__list,
+					.header__menu-toggle {
+						//margin-top: 28px;// will be made larger when font-size gets bigger
+
+						a,
+						.fontIcon:before {
+							//text-shadow: 0 0 0.3em rgba(0, 0, 0, 0.5);
+						}
+
+						a {
+						//	color: $color-white;
+						}
+					}
+				}
+			}// .pg-homepage
+
+		}// @media screen and (min-width: $breakpoint-header)
+
+		.primary-nav__my-nereda {
+			&::before {
+				content: 'my nereda';
+		    position: absolute;
+		    display: block;
+		    top: 0.2em;
+		    font-size: 0.55em;
+
+		    .main-header--is-sticky & {
+		    	top: 0.4em;
+		    }
+			}
+
+			&--signed-in::before {
+				content: 'signed in';
+			}
+		}
+
+		@include mq-min($tweakpoint-header-main-nav-font-size) {
+
+			.pg-homepage {
+                // Turned off because of design changes
+				.primary-nav__list,
+				.header__menu-toggle {
+					//margin-top: 53px;
+				}
+			}
+
+		}// @media screen and (min-width: $tweakpoint-header-main-nav-font-size)
+
+	//-- End primary-nav --
+
+	//-- Start flyout-panel -- (both secondary-nav and tertiary-nav are flyout)
+
+		.flyout-panel {
+			width: 100%;
+			padding-bottom: 4em;
+		}
+
+		.flyout-panel__menu-toggle {
+			position: absolute;
+			top: 0.5rem;
+			right: 0;
+
+			a {
+				border: none;
+				font-size: $font-size-default;
+				white-space: nowrap;
+
+				.fontIcon {
+					margin-left: 0.5em;
+					margin-right: -0.5em;
+					padding: 0.5em;
+					transition: background-color 0.3s ease-out;
+				}
+
+				&:hover,
+				&:focus {
+					background: transparent;
+					.fontIcon {
+						background-color: $color-theme;
+					}
+				}
+			}
+		}
+
+		.flyout-panel__title {
+			margin-left: $flyout-nav-padding-hor;
+			color: $color-white;
+		}
+
+		.secondary-nav__list,
+		.tertiary-nav__list {
+			&.has-expanded-sub-nav {
+				a {
+					opacity: 0.4;
+				}
+
+				.has-sub-nav a.expanded,
+				.has-sub-nav a.expanded + ul a {
+					opacity: 1;
+				}
+			}
+		}
+
+		@media screen and (min-width: $breakpoint-header) {
+			.flyout-panel {
+				position: absolute;
+				z-index: $z-index-secondary-nav;
+				top: 0;
+				right: 0;
+				width: 35em;
+				max-width: 100%;
+				min-height: 100vh;
+				background-color: $color-panel-gradient-top;
+				background-image: $panel-gradient;
+			}
+
+			.flyout-panel__menu-toggle {
+				position: static;
+				display: inline-block;
+				float: right;
+
+				a {
+					opacity: 0;
+					padding-top: 0.7em;// this makes border of first regular menu item align with header bottom
+					font-family: $font-family-brand;
+					text-transform: none;
+					transform: translate(-20px, 15px) scale(0.7);// IE9
+					transform: translate3d(-20px, 15px, 0) scale(0.7);
+					transition: opacity 0.15s 0.15s ease-out,
+											transform 0.15s 0.15s ease-out;
+
+					&.expanded {
+						opacity: 1;
+						transform: translate(0,0);// IE9
+						transform: translate3d(0, 0, 0);
+					}
+				}
+
+			}
+		}
+
+		.secondary-nav__sub-nav-list,
+		.tertiary-nav__sub-nav-list {
+			@extend .no-default-toggle;// overrule default togglePanel behaviour - we want animation 
+
+			overflow: hidden;
+			max-height: 0; 
+			transition: max-height 0.3s;
+
+			li {
+				$transform-props: 0.3s 0.1s ease-out;
+
+				opacity: 0.4;
+				transform: translate3d(0, -0.4em, 0);
+				transition: transform $transform-props,
+										opacity $transform-props;
+			}
+
+			&.expanded {
+				max-height: 40em;
+
+				li {
+					opacity: 1;
+					transform: none;
+				}
+			}
+		}
+
+
+	//-- End flyout-panel --
+
+	// define style for sub-navs
+	// used by tertiary nav and sub-nav
+	%sub-nav-style {
+		a {
+			border: none;
+			padding: $flyout-nav-padding-top $flyout-nav-padding-hor $flyout-nav-padding-bottom;
+			padding: 0.5em $flyout-nav-padding-hor 0.5em;
+			font-size: $font-size-default;
+			font-family: $font-family-brand;
+
+			&:hover,
+			&:focus {
+				background: rgba($color-white, 0.25);
+			}
+		}
+	}
+
+	//-- Start secondary-nav --
+
+		@include mq-max($breakpoint-header-max) {
+			.secondary-nav__menu-toggle {
+				display: none;
+			}
+		}
+
+		@media screen and (min-width: $breakpoint-header) {
+
+			.secondary-nav__list {
+				overflow: hidden;
+			}
+
+			.secondary-nav__list-item {
+				transform: translatex(-5em);
+				transition: none; // Removes the transition if the menu is closed
+				opacity: 0;
+
+				.expanded & {
+					transform: translateX(0);
+					opacity: 1;
+				} 
+				
+				@for $i from 1 through 10 {
+					&:nth-child(#{$i}) {
+						.expanded & {
+							transition: opacity .75s #{$i * .25}s, transform .5s #{$i * .25}s, ease-in;
+						}
+					}				
+				}
+
+				transform: translate3d(1em, 0, 0);
+				transition: none; // Removes the transition if the menu is closed
+				opacity: 0;
+
+				.expanded & {
+					transform: translate3d(0, 0, 0);
+					opacity: 1;
+				} 
+				
+				@for $i from 1 through 10 {
+					&:nth-child(#{$i}) {
+						.expanded & {
+							transition: opacity .5s #{$i * .1}s,
+													transform .3s #{$i * .1}s, ease-out;
+						}
+					}				
+				}
+			}
+
+			.secondary-nav__list a {
+				padding-top: $flyout-nav-padding-top;
+				padding-bottom: $flyout-nav-padding-bottom;
+			}
+		}
+
+		.nav__search-form {
+			padding: 0.5em $flyout-nav-padding-hor;
+			border-bottom: $nav-border;
+
+			@include mq-max($breakpoint-header-max) {
+				position: absolute;
+				top: 0;
+				width: 100%;
+			}
+
+			@include mq-min($breakpoint-header) {
+				// padding-top: $flyout-nav-padding-top;
+				// padding-bottom: $flyout-nav-padding-bottom;
+				padding-top: 4.2rem;
+				padding-bottom: 3.7rem;
+			}
+		}
+
+		input.search-box__field {// input selector necessary for specificity
+			display: inline-block;// prevent it from taking up full width on small screens as regular inputs get
+			width: auto;
+			min-height: 2.5em;
+			opacity: 0.5;
+			transition: opacity 0.3s ease-out;
+			border-color: transparent;
+
+			&:focus {
+				opacity: 1;
+			}
+
+		}
+
+		button.search-box__button {// button selector necessary for specificity
+			@extend .button;
+			@extend .cta;
+
+			border-color: transparent;
+			padding-left: 1.2em;
+			padding-right: 1.2em;
+			min-height: 2.5em;
+			background: $color-theme;
+
+			&:hover,
+			&:focus {
+				background: $color-theme-hover;
+				border-color: $color-theme-hover;
+			}
+
+			.fontIcon {
+				margin-left: 0;
+				margin-right: -0.3em;
+			}
+		}
+
+		.secondary-nav__sub-nav-list {
+			@extend %sub-nav-style;
+		}
+
+	//-- End secondary-nav --
+
+
+
+	//-- Start tertiary-nav --
+
+		.tertiary-nav {
+			position: absolute;
+			top: 0;
+			background-color: $color-panel-gradient-top;
+			background-image: $panel-gradient;
+
+			&:after {
+				// on small screens, give slight drop-shadow so we can see tertiary-nav move over main menu
+				position: absolute;
+				display: block;
+				content: '';
+				top: 0;
+				left: -5px;
+				z-index: -1;// so links in nav are clickable
+				width: 100%;
+				height: 100%;
+				border-left: 5px solid rgba(0,0,0,0.2);// box-shadow would be nice, but this performs better
+			}
+
+			@include mq-min($breakpoint-header) {
+				&:after {
+					display: none;
+				}
+			}
+
+			h3 {
+				margin: 0;
+				border-bottom: $nav-border;
+				padding: 0.5em $flyout-nav-padding-hor;
+				color: $color-white;
+				font-size: 20px;// font-size-m 
+				font-size: 2.0rem;// font-size-m 
+				line-height: 1.75;
+
+				@include mq-min($breakpoint-header) {
+					// padding: $flyout-nav-padding-top $flyout-nav-padding-hor $flyout-nav-padding-bottom;
+					padding: 5rem $flyout-nav-padding-hor 3.3rem;
+					text-transform: none;
+				}
+			}
+		}
+
+		.tertiary-nav__list-item {
+			@extend %sub-nav-style;
+
+			&.has-sub-nav {
+				position: relative;
+				width: 50%;
+			}
+
+			.tertiary-nav__sub-nav-list {
+				position: absolute;
+				z-index: 1;// so hover on parent's next sibling won't show when hovering sub-nav-item
+				top:0;
+				left: 100%;
+				width: 100%;
+			}
+		}
+
+	//-- End tertiary-nav --
+
+
+
+	//-- Start toggling behaviour --
+
+		// main-nav holds both primary and secondary nav 
+			.main-nav,
+			.tertiary-nav {
+				@extend .no-default-toggle;// overrule default togglePanel behaviour - we want animation 
+
+				min-height: 100vh;
+				transition: transform 0.2s ease-out;
+
+				&.togglePanel.collapsed {
+					transform: translateX(105%);// IE9: no translateZ slightly more than 100% so box-shadow is also hidden
+					transform: translate3d(105%, 0, 0);// slightly more than 100% so box-shadow is also hidden
+				}
+
+				&.togglePanel.expanded {
+					// in narrow screens, content width has a horizontal margin. translateX should get negative value to compensate for that.
+					transform: translateX(-1* $content-width-margin-hor);// IE9
+					transform: translate3d(-1* $content-width-margin-hor, 0, 0);
+
+					@include mq-min($breakpoint-header) {
+					transform: translateX(0);// IE9
+					transform: translate3d(0, 0, 0);
+					}
+				}
+			}
+
+			.tertiary-nav.togglePanel.expanded {
+				transform: translateX(0);// IE9
+				transform: translate3d(0, 0, 0);
+			}
+
+			// on small screens, tertiary-nav and secondary-nav differ:
+			// secondary-nav is always visible; tertiary-nav behaves exactly like on wide screens
+
+			.togglePanel .secondary-nav {
+				transform: none;
+			}
+
+
+
+		// on wide screens, we always have to show main-nav (since it contains primary-nav)
+		// we'll move the toggling behaviour to secondary nav and the overlay
+		@media screen and (min-width: $breakpoint-header) {
+			.main-nav {
+				transition: none;
+				min-height: 0;
+			}
+
+			.main-nav.togglePanel.expanded,
+			.main-nav.togglePanel.collapsed {
+				transform: none;// this needs to be "none" and not translateX(0): otherwise secondary-nav's reference point seems wrong? 
+			}
+
+			.togglePanel {
+
+				.secondary-nav {
+					left: 100%;// place outside of viewport by default
+					transition: transform 0.2s ease-out;
+				}
+
+				&.collapsed .secondary-nav {
+					transform: translateX(0);// IE9
+					transform: translate3d(0, 0, 0);
+				}
+
+				&.expanded .secondary-nav {
+					transform: translateX(-100%);// IE9
+					transform: translate3d(-100%, 0, 0);
+				}
+			}
+		}
+
+		//-- Start sub-nav toggling behaviour
+
+				%sub-nav-toggle-icon-style {
+					display: inline-block;
+					float: right;
+					width: 2em;
+					padding: 0.35em 0.3em;
+					text-align: center;
+					transition: transform 0.2s ease-out;
+					@extend .icon-right;
+				}
+
+				.has-sub-nav .toggle .fontIcon {
+					@extend %sub-nav-toggle-icon-style;
+				}
+
+				.has-sub-nav .toggle.expanded .fontIcon {
+					transform: rotate(90deg);
+
+					.tertiary-nav & {
+						transform: rotate(180deg);
+					}
+				}
+
+		//-- End sub-nav toggling behaviour
+
+
+	//-- End toggling behaviour --
+
+//-- End main-nav --
+
+//-- Start styling for when header is in sticky state
+.pageWrapper .main-header--is-sticky {
+	// added .pageWrapper selector to make sure specificity of .pg-homepage .main-header is overruled
+	// position: sticky;
+	padding: 0;
+	background-image: none;
+	// background-color: $color-white;
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+
+	.logo {
+		overflow: hidden;// use overflow to cut of tagline
+		margin-top: 5px;
+		margin-left: 15px;
+		width: 100px;
+		height: 38px;
+
+		img {
+			margin: 0;
+		}
+	}
+
+	.primary-nav__list,
+	.header__menu-toggle {
+		margin-top: 0;
+	}
+
+}

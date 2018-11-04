@@ -1,0 +1,71 @@
+﻿
+.datepicker-container {
+    margin: 0 0 2rem;
+}
+
+input.datepicker {
+    width: 14rem;
+    margin: 0 1.5rem 0 0;
+}
+
+.chart-overview {
+    @media screen and (min-width: $lg-min) {
+        margin: 0 -1rem;
+    }
+}
+
+
+.chart-container {
+
+    @media screen and (min-width: $lg-min) {
+        vertical-align: top;
+        display: inline-block;
+        width: calc(49% - 2rem);
+        margin: 0 1rem 3rem;
+    }
+
+    .chart {
+        margin: 0 0 1.5rem;
+    }
+
+    p {
+        text-align: right;
+    }
+}
+
+.chart-table {
+    margin: 2rem 4rem 1rem;
+    font-size: 11px;
+
+    th,
+    td {
+        padding: .7rem 1.5rem;
+        color:#008db0;
+        text-align: left;
+    }
+
+    th {
+        font-weight: bold;
+    }
+
+    tr:nth-child(odd) th,
+    tr:nth-child(odd) td {
+        background: #d7f1f8;
+    }
+
+    tr:nth-child(1) th, 
+    tr:nth-child(1) td {
+        background: #008db0;
+        color: #fff;
+        font-weight: normal;
+    }
+
+    tr:nth-last-child(1) th, 
+    tr:nth-last-child(1) td {
+        background: transparent;
+    }
+}
+
+.table-filter {
+    margin: 2rem 4rem 1rem
+}

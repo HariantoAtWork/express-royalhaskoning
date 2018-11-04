@@ -1,0 +1,217 @@
+/* font.css */
+
+	@font-face {
+		font-family: 'TheSansBold-Plain';
+		src: url('/fonts/TheSans_TT7_.eot');
+		src: local('TheSansExtraBold_Plain'), url('/fonts/TheSans_TT7_.woff') format('woff'), url('/fonts/TheSans_TT7_.svg#TheSans_TT7_') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: 'TheSansExtraBold-Plain';
+		src: url('/fonts/TheSans_TT8_.eot');
+		src: local('TheSansExtraBold_Plain'), url('/fonts/TheSans_TT8_.woff') format('woff'), url('/fonts/TheSans_TT8_.svg#TheSans_TT8_') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	/* TheSans plain */
+	@font-face {
+		font-family: 'TheSans';
+		src: url(/fonts/TheSans_B2_5_.eot);
+		src: url(/fonts/TheSans_B2_5_.woff) format("woff");
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	/* TheSans plain italic */
+	@font-face {
+		font-family: 'TheSans';
+		src: url(/fonts/TheSans_B2_5_italic.eot);
+		src: url(/fonts/TheSans_B2_5_italic.woff) format("woff");
+		font-weight: normal;
+		font-style: italic;
+	}
+
+	/* TheSans bold */
+	@font-face {
+		font-family: 'TheSans';
+		src: url(/fonts/TheSans_B2_7_.eot);
+		src: url(/fonts/TheSans_B2_7_.woff) format("woff");
+		font-weight: bold;
+		font-style: normal;
+	}
+
+	/* TheSans bold italic */
+	@font-face {
+		font-family: 'TheSans';
+		src: url(/fonts/TheSans_B2_7_italic.eot);
+		src: url(/fonts/TheSans_B2_7_italic.woff) format("woff");
+		font-weight: bold;
+		font-style: italic;
+	}
+
+	/* TheSans semi bold */
+	@font-face {
+		font-family: 'TheSans-SemiBold';
+		src: url(/fonts/TheSans_B2_6_.eot);
+		src: url(/fonts/TheSans_B2_6_.woff) format("woff");
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	/* TheSans semi bold italic */
+	@font-face {
+		font-family: 'TheSans-SemiBold';
+		src: url(/fonts/TheSans_B2_6_italic.eot);
+		src: url(/fonts/TheSans_B2_6_italic.woff) format("woff");
+		font-weight: normal;
+		font-style: italic;
+	}
+
+/* global.css */
+
+	html {
+		font-size: 62.5%;/* 10px will be value for rems */
+	       -webkit-font-smoothing: antialiased;
+	       font-smoothing: antialiased;
+	       text-rendering: optimizeLegibility;
+	       -webkit-text-size-adjust: none; /* prevent font scaling when orientation change */
+	}
+
+	body {
+		background: #f1f1f1 url(/images/bg-body.gif) 50% top repeat-y;
+		background-image: url(/images/bg-body.gif), linear-gradient(#fff 0, #fff 200px, #f1f1f1 500px);
+		background-position: 50% top, 0 0;
+		background-repeat: repeat-y, no-repeat;
+		color: $color-textgrey
+		font-family: verdana, helvetica, arial, sans-serif;
+		font-size: 14px;
+		font-size: 1.4rem;
+		line-height: 28px;
+		line-height: 2.8rem;
+	}
+
+	h1, .h1,
+	h2, .h2 {
+		font-family: 'TheSans', verdana, helvetica, arial, sans-serif;
+	}
+
+	/* headings inside and outside of cUnits should align with cUnit content (margin+padding = 40px) */
+	h1, .h1 {
+		margin: 36px 40px;
+		margin: 3.6rem 4rem;
+		color: $color-theme;
+		font-size: 32px;
+		font-size: 3.2rem;
+		line-height: 36px;
+		line-height: 3.6rem;
+	}
+	h1 {
+		margin-bottom: 0;
+	}
+
+	h2, .h2 {
+		margin: 36px 40px 10px;
+		margin: 3.6rem 4rem 1rem;
+		color: $color-mediumblue;
+		font-size: 24px;
+		font-size: 2.4rem;
+		line-height: 28px;
+		line-height: 2.8rem;
+	}
+
+	h3, .h3 {
+		margin: 20px 40px;
+		margin: 2rem 4rem;
+		font-size: 16px;
+		font-size: 1.6rem;
+		line-height: 24px;
+		line-height: 2.4rem;
+	}
+
+	h4, .h4 {
+		font-weight: bold;
+	}
+
+	a {
+		text-decoration: none;
+		color: $color-mediumblue;
+	}
+
+	p {
+		margin: 0 0 1.5rem;
+	}
+
+	.sideCol p,
+	.forwardList li {
+		line-height: 20px;
+		line-height: 2.0rem;
+	}
+
+	p a {
+		color: $color-mediumblue;
+	}
+
+	p a:hover,
+	p a:focus {
+		color: $color-lightblue;
+		text-decoration: underline;
+	}
+
+	.rte h1,
+	.rte h2,
+	.rte h3 {
+		/* don't let headings wrap around images in rte */
+		clear: both;
+	}
+
+	.rte img {
+		float: left;
+		margin-right: 0.5em;
+	}
+
+	.rte.right img {
+		float: right;
+		margin-right: 0;
+		margin-left: 0.5em;
+	}
+
+	.rte ul,
+	.rte ol {
+		margin: 0 0 1em;
+	}
+
+	.rte ul li {
+		padding-left: 1em;
+		background: transparent url(/images/rhdhv-icons.png) 0 -80px no-repeat;
+	}
+
+	.rte ol {
+		padding-left:2em;
+		list-style-type: decimal;
+	}
+
+    font.quote, span.quote {
+        padding-left: 20px;
+        display: block;
+    }
+
+    font.quote, span.quote {
+	    position: relative;
+	    font-style: italic;
+	    font-size: 16px;
+	    line-height: 24px;
+	    margin-left: 70px;
+	    padding: 0;
+    }
+    font.quote:before, span.quote:before {
+	    position: absolute;
+	    top: 5px;
+	    left: -70px;
+	    content: "";
+	    width: 45px;
+	    height: 35px;
+	    background: url(/images/icon-quote.png);
+    }

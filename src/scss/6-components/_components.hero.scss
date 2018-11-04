@@ -1,0 +1,398 @@
+/*
+* Hero component (huge image with heading and optional text and button)
+*
+* Styling was started with the nicest version first, later it became apperent that we
+* could also use that as the base for the simpler versions. In hindsight, it would
+* have been better to do the basic version first and extend on that.
+*/
+
+.js-hero__image-src {
+	// display: none;
+	opacity: 0;
+	visibility: hidden;
+	width: 1px;
+	height: 1px;
+}
+
+// vars only for hero
+$hero-image-transition-duration: 0.7s;
+$hero-body-color-bg: rgba(0,0,0,0.2);
+
+// not too obvious darkened background for behind text
+@mixin subtly-darker-background {
+	display: block;
+	content: '';
+	width: 100%;
+	height: 100%;
+	color: $hero-body-color-bg;
+	background: currentColor;
+	position: absolute;
+	top: 0;
+	z-index: -1;
+	box-shadow: 0 0 40px 40px currentColor;
+	filter: blur(20px);// add blur as well as box-shadow, because chrome renders a strange line between box and shadow
+}
+
+.hero {
+	box-sizing: border-box;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	height: 85vh;
+	min-height: 25rem;
+	max-height: 60vw;
+	background-color: $color-almostblack;
+	z-index: 0;// Ralf en Milan quick and dirty hotfix, maybe this is a really bad idea
+	// z-index: -1; tricky. don't know if I broke it elsewhere
+	&.hero--cms-darken-image {
+
+		&:after {
+			display: block;
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0,0,0,0.2);
+			pointer-events: none;
+		}
+	}
+
+	.o-content-width {
+		position: relative;
+		height: 100%;
+		width: 100%;
+		width: calc(100% - #{2*$grid-margin-hor});
+	}
+}
+
+$hero-light-indent-bottom: 6vw;// amount main sticks into hero--light
+.hero--light,
+.hero--basic {
+	padding-bottom: $hero-light-indent-bottom;// hero__body is positioned relative to hero's bottom; this way the bottom-reference point is the top of the indent
+	height: 60vh;
+	max-height: 45vw;
+
+	+ .main {
+		margin-top: -1*$hero-light-indent-bottom; 
+	}
+}
+
+
+.hero__image {
+	position: absolute;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	opacity: 0;  /* make things invisible upon start */
+	transition: opacity $hero-image-transition-duration ease-out;
+
+	.is-loaded & {
+		opacity: 1; /* make things visible if loaded */
+	}
+}
+
+.hero__iframe {
+	width: 100%;
+	height: 100% !important;// added important to prevent iframe resizer script from influencing iframe in hero
+}
+
+.hero__body {
+	@extend .cUnit;// align with regular content
+	box-sizing: border-box;
+	position: absolute;
+	overflow: hidden;
+	bottom: 10%;
+	z-index: 1;
+	width: 90%;
+	width: calc(100% - #{2*$grid-margin-hor});
+	max-width: 53em;
+	font-family: $font-family-brand;
+	opacity:0;  /* make things invisible upon start */
+	transform: translate3d(0, 0.5em, 0);
+	transition: opacity 0.5s $hero-image-transition-duration ease-out;
+
+	.hero--cms-body-with-bg & {
+		overflow: visible;
+
+		&::after {
+			@include subtly-darker-background;
+		}
+
+		.hero__title,
+		.hero__description {
+			text-shadow: 0 0 10px black;
+		}
+
+	}
+
+	.is-loaded & {
+		opacity: 1; /* make things visible if loaded */
+		// transform: none;
+	}
+
+	@include mq-min(xl) {
+		bottom: 45%;
+		transform: translateY(50%);
+	}
+}
+
+.hero__title,
+.hero__description {
+	color: $color-white;
+	text-shadow: 0 0 0.3em rgba(0,0,0,0.5);
+	transform: translate3d(0, 1.0rem, 0);
+	transition: transform 0.3s $hero-image-transition-duration ease-out;
+
+	.is-loaded & {
+		transform: none;
+	}
+}
+
+.hero__title {
+	font-size: $font-size-xl-px;
+	font-size: $font-size-xl;
+
+	@include mq-min(md) {
+		font-size: $font-size-xxl-px;
+		font-size: $font-size-xxl;
+	}
+
+	@include mq-min(lg) {
+		font-size: $font-size-3xl-px;
+		font-size: $font-size-3xl;
+	}
+
+	@include mq-min(xl) {
+		font-size: $font-size-huge-px;
+		font-size: $font-size-huge;
+	}
+
+	// smaller variant
+		// define somewhat smaller variants of fonts, only to be used here
+		// current sizes: huge: 7.0 3xl: 6.0 xxl: 4.0 xl: 3.2
+		$font-size-xxl-px--smaller: 36px;
+		$font-size-xxl--smaller: 3.6rem;
+		$font-size-3xl-px--smaller: 50px;
+		$font-size-3xl--smaller: 5.0rem;
+		$font-size-huge-px--smaller: 65px;
+		$font-size-huge--smaller: 6.5rem;
+		
+		.hero--cms-heading-size-smaller & {
+			@include mq-min(md) {
+				font-size: $font-size-xxl-px--smaller;
+				font-size: $font-size-xxl--smaller;
+			}
+
+			@include mq-min(lg) {
+				font-size: $font-size-3xl-px--smaller;
+				font-size: $font-size-3xl--smaller;
+			}
+
+			@include mq-min(xl) {
+				font-size: $font-size-huge-px--smaller;
+				font-size: $font-size-huge--smaller;
+			}
+		}
+
+	// smallest variant; go 1 step down in scale
+		.hero--cms-heading-size-smallest & {
+			@include mq-min(md) {
+				font-size: $font-size-xl-px;
+				font-size: $font-size-xl;
+			}
+
+			@include mq-min(lg) {
+				font-size: $font-size-xxl-px;
+				font-size: $font-size-xxl;
+			}
+
+			@include mq-min(xl) {
+				font-size: $font-size-3xl-px;
+				font-size: $font-size-3xl;
+			}
+		}
+
+	// font-sizes for hero--light
+	// these have to be able to fit in the sometimes rediculously long project titles
+	.hero--light & {
+		margin: 0;
+		font-size: $font-size-m-px;
+		font-size: $font-size-m;
+
+		@include mq-min(sm) {
+			font-size: $font-size-l-px;
+			font-size: $font-size-l;
+		}
+
+		@include mq-min(md) {
+			font-size: $font-size-xl-px;
+			font-size: $font-size-xl;
+		}
+
+		@include mq-min(lg) {
+			font-size: $font-size-xxl-px;
+			font-size: $font-size-xxl;
+		}
+
+		@include mq-min(xl) {
+			font-size: $font-size-3xl-px;
+			font-size: $font-size-3xl;
+		}
+	}
+}// hero__title
+
+.hero__description {
+	display: none;// hide on small screens
+	font-size: $font-size-m-px;
+	font-size: $font-size-m;
+	line-height: 1.5;
+
+	@include mq-min(md) {
+		display: block;
+	}
+}
+
+.hero__video {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: auto;
+	height: auto;
+	min-width: 100%;
+	min-height: 100%;
+	transform: translateX(-50%) translateY(-50%);
+	opacity: 1;
+	transition: opacity 2s ease-in-out;
+
+	&.is-loading {
+		opacity: 0;    
+	} 
+}
+
+
+.hero__scroll-indicator {
+	display: none;// we only want to see scroll-indicator on big heroes
+
+	.hero__caption ~ .o-content-width & {
+		// if caption is present, align left to prevent overlaps
+		left: calc(#{$grid-margin-hor} + #{$grid-padding-hor});
+	}
+}
+
+.hero--big {
+	.hero__scroll-indicator {
+
+		@include mq-min(lg) {
+			display: block;
+			position: absolute;
+			z-index: 0;
+			bottom: 1em;
+			font-size: $font-size-tiny;
+
+			@include mq-min(xl) {
+				font-size: $font-size-default;
+			} 
+
+			// position of scroll indicator is dependent on whether caption is present or not
+			// if no caption, align with left side of small column
+			$circle-correction: 0.2em;// correction to make circle look aligned (while it is really a bit to the left)
+			left: calc(66.67% + #{$grid-margin-hor} + #{$grid-padding-hor} - #{$circle-correction});
+				
+
+
+			&::after {
+				@include subtly-darker-background;
+				color: rgba(0,0,0,0.3);
+				box-shadow: 0 0 20px 20px currentColor;
+			}
+
+			@keyframes bounce {
+				0%, 100% {	transform: translateY(0); }
+				50% {				transform: translateY(0.2em);	}
+			}
+
+			a {
+				display: inline-block;
+				position: relative;
+				color: $color-white;
+
+				.fontIcon {
+					margin-right: 0.5em;
+					&::before {
+						// already has icon in its content-property
+						display: inline-block;
+						border: 2px solid $color-white;
+						border-radius: 50%;
+						padding: 0.5em;
+					}
+				}
+
+				&:hover,
+				&:focus {
+					.fontIcon::before {
+						animation: bounce 0.6s;
+						animation-iteration-count: 2;
+					}
+				}
+			}// a
+
+		}// @include mq-min(lg)
+
+	}// hero__scroll-indicator
+}// .hero--big
+
+.hero__caption {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	padding: 0.4em 1em;
+	color: rgba($color-white, 0.9);
+	text-shadow: 0 0 3px rgba(0,0,0,1);
+	font-size: $font-size-tiny;
+	font-style: italic;
+
+	.hero--cms-body-with-bg & {
+		background: $hero-body-color-bg;
+		box-shadow: 0 0 40px 20px $hero-body-color-bg;
+	}
+}
+
+
+
+//-- Start hero basic
+.hero--basic {
+	@extend .hero--light;
+
+	box-sizing: content-box;
+	height: auto;
+	min-height: 0;
+	
+	.hero__body {
+		position: relative;
+		bottom: auto;
+		margin-top: 0; 
+		margin-bottom: 0.5em; 
+		transform: none;
+
+		@include mq-min(md) {
+			margin-top: 2em; 
+			margin-bottom: 2em; 
+		}
+	}
+
+	.hero__image--low-res {
+		filter: blur(6px);
+		// make image slightly bigger than hero container, to prevent dark outlines due to blurring
+		overflow: hidden;
+		margin: -10px;
+		width: calc(100% + 20px);
+		height: calc(100% + 20px);
+	}
+}
+
+.loader.hero__loader {
+	top: 35%;
+}

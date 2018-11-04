@@ -1,0 +1,75 @@
+//-- Start project filter --
+
+	.projectFilter {
+		.showFilter {
+		    display: none;
+		}
+
+		.clearAll,
+		.hideFilter,
+		.showFilter {
+		    font-family: 'TheSans',verdana,helvetica,arial,sans-serif;
+		    color: $color-theme-hover;
+		    font-size: $font-size-default;
+		    cursor: pointer;
+		    text-transform: uppercase;
+		    letter-spacing: 0.05em;
+		}
+
+		.filterOptions {
+		    border-bottom: 1px solid $color-backgroundblue;
+		    padding: 0.25em 0;
+		}
+
+		.clearAll:hover,
+		.hideFilter:hover,
+		.showFilter:hover {
+		    text-decoration: underline;
+		}
+
+		.clearAll {
+		    float: right;
+		}
+	}
+
+	.filterBox {
+		padding: 1.5em 0;
+		border-bottom: 1px solid $color-backgroundblue;
+
+		& > h3 {
+		    margin-bottom: 0.5em;
+		    cursor: pointer;
+		}
+
+		& > h3 span {
+		    float: right;
+		}
+
+		& > h3 span.icon-min {
+		    margin-right: 4px;
+		}
+
+		.more {
+		    margin-top: 0.5em;
+		    color: $color-theme-hover;
+		    font-size: $font-size-default;
+		    cursor: pointer;
+		    text-transform: uppercase;
+		    letter-spacing: 0.05em;
+		}
+
+	}// .filterBox
+
+	.hasProjectFilter .teaser.verticalTeaser.mediaBlock .bodyBox .h2 {
+		font-size: 14px;
+		font-size: 1.4rem;
+	}
+
+	.projectCounter p {
+	    margin: 0;
+	    text-align: right;
+	    font-size: 1.2rem;
+	    padding: 0 2rem;
+	}
+
+//-- End project filter --

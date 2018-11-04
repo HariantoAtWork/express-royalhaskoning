@@ -1,0 +1,100 @@
+$breakpoint-ts-1b2s: 800px;// above this breakpoint, small teasers are shown to the side of big teaser
+
+.grid-teaser-block {
+	overflow: hidden;// wrap around floats
+	position: relative;
+	margin: 0 -1%;// compensate for first and last teaser's hor margin
+
+	@include mq-min($breakpoint-ts-1b2s) {
+		// padding-bottom: 66%;// all items within have position: absolute; this gives this container height of the big item
+		overflow: hidden;
+	}
+
+	.blockLink {
+		@extend %blockLink--dark-overlay;
+		width: 100%;
+	}
+}
+
+
+.grid-teaser {
+	float: left;
+	margin: 0 1% 2%;
+	width: 48%;
+
+	.blockLink {
+		height: 100%;// also give block height when image is missing
+	}
+
+	.bodyBox .h2 {
+		margin-top: 2.3rem;
+		max-width: 15em;
+
+		&::before {
+			top: -1.3rem;
+		}
+	}
+
+	&--big {
+		width: 98%;
+
+		.bodyBox .h2 {// bodyBox selector is necessary to override specificity of %blockLink--dark-overlay
+			font-size: $font-size-l-px;
+			font-size: $font-size-l;
+		}
+	}
+
+	.date,
+	.author {
+		font-size: $font-size-tiny;
+		letter-spacing: 0.15em;
+	}
+
+	.date {
+		margin-bottom: 0.3em;
+		color: inherit;
+	}
+
+	@include mq-min($breakpoint-ts-1b2s) {
+		width: 31.33333%;
+		padding-bottom: 31.33333%;
+
+		&--big {
+			width: 64.66666%;
+			padding-bottom: 64.66666%;
+		}
+
+		.blockLink {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		.bodyBox .h2 {// bodyBox selector is necessary to override specificity of %blockLink--dark-overlay
+			font-size: $font-size-l-px;
+			font-size: $font-size-l;
+		}
+
+	}// @include mq-min($breakpoint-ts-1b2s)
+
+	@include mq-min(1100px) {
+		 .bodyBox .h2 {// bodyBox selector is necessary to override specificity of %blockLink--dark-overlay
+			font-size: $font-size-xl-px;
+			font-size: $font-size-xl;
+		}
+	}
+
+	@include mq-min(1300px) {
+		&--big .bodyBox .h2 {// bodyBox selector is necessary to override specificity of %blockLink--dark-overlay
+			font-size: $font-size-xxl-px;
+			font-size: $font-size-xxl;
+		}
+	}
+
+	img {
+		width: 100%;
+	}
+
+
+}// .grid-teaser
+

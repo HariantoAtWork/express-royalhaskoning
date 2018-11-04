@@ -1,0 +1,24 @@
+/* large screens */
+	.respcOnlySmall {
+		display: none;
+	}
+
+	.respcOnlyLarge {
+		clear: both;
+		display: block;
+	}
+
+@media screen and (max-width: $sm-max) {
+	/* small screens */
+	.respcOnlySmall {
+		display: block;
+	}
+
+	.respcOnlyLarge {
+		display: none;
+	}
+}
+
+.showAnyway {
+    display: block !important;
+}

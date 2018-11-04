@@ -1,0 +1,10 @@
+// define this theme's colors
+	$color-theme-green: #95b139;
+	$color-theme-hovergreen: #809b2b;
+
+// map default theme colors to this theme's colors
+	$color-theme: $color-theme-green;
+	$color-theme-hover: $color-theme-hovergreen;
+
+// branding images etc
+	$footer-bg-image: '/images/themes/blue/CC5 rhdhv web footer.jpg';

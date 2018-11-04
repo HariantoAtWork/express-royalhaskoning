@@ -1,0 +1,6 @@
+// basic styles for toggle are defined in css/libs/jquery.toggle.css
+
+.togglePanel.no-default-toggle.collapsed {
+	/* this class can be added to panel (or extended) to overrule the default toggle behaviour */
+	display: block;
+}

@@ -1,0 +1,116 @@
+$breakpoint-ts-1b2s: 800px;// above this breakpoint, small teasers are shown to the side of big teaser
+
+.teaser--1-big-2-small {
+	overflow: hidden;// wrap around floats
+	position: relative;
+
+	@include mq-min($breakpoint-ts-1b2s) {
+		padding-bottom: 66%;// all items within have position: absolute; this gives this container height of the big item
+	}
+
+	.blockLink {
+		@extend %blockLink--dark-overlay;
+		width: 100%;
+	}
+
+	.bodyBox .h2 {
+		margin-top: 2.3rem;
+		max-width: 15em;
+
+		&::before {
+			top: -1.3rem;
+		}
+	}
+}
+
+// use .ts-1b2s as shorter version for teaser-1-big-2-small
+
+.ts-1b2s__item {
+	float: left;
+
+	&--big {
+		width: 100%;
+
+		.bodyBox .h2 {// bodyBox selector is necessary to override specificity of %blockLink--dark-overlay
+			font-size: $font-size-l-px;
+			font-size: $font-size-l;
+		}
+	}
+
+	&--small {
+		margin-top: 2%;
+		width: 49%;
+
+		// 2nd small item
+		+ .ts-1b2s__item {
+			float: right;
+		}
+	}
+
+	.date,
+	.author {
+		letter-spacing: 0.15em;
+	}
+
+	.date {
+		margin-bottom: 0.3em;
+		color: inherit;
+	}
+
+	@include mq-min($breakpoint-ts-1b2s) {
+		position: absolute;
+		float: none;
+
+		&--big {
+			width: 66%;
+		}
+
+		&--small {
+			top: 0;
+			right: 0;
+			margin-top: 0;
+			width: 32%;
+			padding-bottom: 32%;
+
+
+			// 2nd small item
+			+ .ts-1b2s__item {
+				top: auto;
+				bottom: 0;
+			}
+		}
+
+		.blockLink {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		.bodyBox .h2 {// bodyBox selector is necessary to override specificity of %blockLink--dark-overlay
+			font-size: $font-size-l-px;
+			font-size: $font-size-l;
+		}
+
+	}// @include mq-min($breakpoint-ts-1b2s)
+
+	@include mq-min(1100px) {
+		 .bodyBox .h2 {// bodyBox selector is necessary to override specificity of %blockLink--dark-overlay
+			font-size: $font-size-xl-px;
+			font-size: $font-size-xl;
+		}
+	}
+
+	@include mq-min(1300px) {
+		&--big .bodyBox .h2 {// bodyBox selector is necessary to override specificity of %blockLink--dark-overlay
+			font-size: $font-size-xxl-px;
+			font-size: $font-size-xxl;
+		}
+	}
+
+	img {
+		width: 100%;
+	}
+
+
+}// .ts-1b2s__item
+

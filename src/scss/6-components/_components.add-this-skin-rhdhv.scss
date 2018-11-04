@@ -1,0 +1,93 @@
+
+//-- old addThis implementation - let's leave it in in case an older instance is still present somewhere --
+
+	.addThisContainer {
+		display: inline-block;
+		width: 100%;
+		vertical-align: bottom;
+	}
+
+	.addthis_toolbox a {
+		display: inline-block;
+	}
+
+	.addthis_toolbox .addthis_button_facebook_like {
+		margin: 0;
+	}
+
+//-- new AddThis implementation --
+
+	body {
+		// body selector added to give more specificity than just .atts which is used in AddThis' own css 
+	
+	.atss {
+		top: auto;
+		bottom: 10%;
+		z-index: $z-index-addthis;
+	}
+
+	@include mq-max($md-max) {
+		// this is where hor margins around content get bigger
+		$atts-btn-size: 32px;// originally: 3pc (pica) = 48px
+		$atss-icon-size: 24px;// originally: 2pc (pica) = 32px
+		$atts-padding: ($atts-btn-size - $atss-icon-size)/2;// originally: 8px
+
+		.atss .at-share-btn,
+		.atss a {
+			width: $atts-btn-size;
+			
+			&:hover,
+			&:focus {
+				width: 1.25*$atts-btn-size;
+			}
+		}
+
+		.atss .at-share-btn .at-icon-wrapper,
+		.atss a .at-icon-wrapper {
+			padding-top: $atts-padding;
+			padding-bottom: $atts-padding;
+		}
+
+		.atss .at-share-btn span .at-icon,
+		.atss a span .at-icon {
+			width: $atss-icon-size;
+			height: $atss-icon-size;
+			line-height: $atss-icon-size;
+		}
+	}// include mq-max($md-max)
+
+
+	@include mq-only(lg) {
+		
+		$atts-btn-size: 40px;// originally: 3pc (pica) = 48px
+		$atss-icon-size: 36px;// originally: 2pc (pica) = 32px
+		$atts-padding: ($atts-btn-size - $atss-icon-size)/2;// originally: 8px
+
+		.atss .at-share-btn,
+		.atss a {
+			width: $atts-btn-size;
+			
+			&:hover,
+			&:focus {
+				width: 1.25*$atts-btn-size;
+			}
+		}
+
+		.atss .at-share-btn .at-icon-wrapper,
+		.atss a .at-icon-wrapper {
+			padding-top: $atts-padding;
+			padding-bottom: $atts-padding;
+		}
+
+		.atss .at-share-btn span .at-icon,
+		.atss a span .at-icon {
+			width: $atss-icon-size;
+			height: $atss-icon-size;
+			line-height: $atss-icon-size;
+		}
+	}// include mq-max($md-max)
+
+
+
+	}// body
+

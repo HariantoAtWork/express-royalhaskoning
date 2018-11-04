@@ -1,0 +1,43 @@
+// font stuff
+
+// At the rhdhv offices windows 7 or 8 is used. This windows version has a default sisplay setting for text-size set to 125%
+// (right click on desktop > display settings). This causes the typography to look "bulkier".
+// For rhdhv to see what Windows 10 users see, they have to zoom out the browser to 80%.
+// I (Jarón) have tuned down the font-sizes a bit, so they still appear okay on both the Windows 7 and 8 and Windows 10 machines.
+	$font-size-tiny-px: 12px;
+	$font-size-tiny: 1.2rem;
+	$font-size-default-px: 15px;// before tune-down: 16px
+	$font-size-default: 1.5rem;
+	$font-size-m-px: 18px;// before tune-down: 20px
+	$font-size-m: 1.8rem;
+	$font-size-l-px: 24px;// before tune-down: 26px
+	$font-size-l: 2.4rem;
+	$font-size-xl-px: 32px;
+	$font-size-xl: 3.2rem;
+	$font-size-xxl-px: 40px;
+	$font-size-xxl: 4.0rem;
+	$font-size-3xl-px: 60px;
+	$font-size-3xl: 6.0rem;
+	$font-size-huge-px: 70px;// before tune-down: 80px
+	$font-size-huge: 7.0rem;
+
+	$font-brand: 'TheSans';
+	$font-brand-bold: 'TheSans-SemiBold';
+	$font-family-default: verdana, helvetica, arial, sans-serif;
+
+	$font-family-brand: $font-brand, $font-family-default; 
+	$font-family-brand-bold: $font-brand-bold, $font-family-default;
+ 
+$line-height-default: 1.75;
+
+// z-indexes
+	$z-index-addthis: 10020;// this is the value given by addthis; I've overwritten it with the same value so we have control
+
+	$z-index-header: $z-index-addthis + 10;
+		//child of header, so z-index is within header's z-index
+		$z-index-main-nav: $z-index-header + 10;
+			// these are childs of main-nav, so their z-index is within main-nav
+			// however, since 
+			$z-index-main-nav-overlay: $z-index-main-nav + 5;
+			$z-index-secondary-nav: $z-index-main-nav + 10;
+			$z-index-country-nav: $z-index-main-nav + 20;

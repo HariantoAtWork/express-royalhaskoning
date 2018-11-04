@@ -1,0 +1,10 @@
+// define this theme's colors
+	$color-theme-red: #d2554b;
+	$color-theme-hover-red: #c32417;
+
+// map default theme colors to this theme's colors
+	$color-theme: $color-theme-red;
+	$color-theme-hover: $color-theme-hover-red;
+
+// branding images etc
+	$footer-bg-image: '/images/themes/red/CC6 rhdhv web footer.jpg';

@@ -1,0 +1,99 @@
+/*-- Start kpiUnit --*/
+
+	.kpiUnit {
+		overflow: visible;
+		position: relative;
+		background: $color-backgroundblue;
+	}
+
+	.kpiUnit h1 {
+		color: $color-mediumblue;
+	}
+
+	.badge {
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 0.1em 0.6em;
+		background: $color-theme;
+		text-transform: uppercase;
+		color: $color-white;
+		font-weight: bold;
+		font-size: 12px;
+		font-size: 1.2rem;
+	}
+
+
+	/*-- Start bigger screens --*/
+
+		@media screen and (min-width: 40em) {
+			
+			.badge {
+				top: 1em;
+				right: -1em;
+				padding: 0.5em 1em;
+				font-size: 14px;
+				font-size: 1.4rem;
+			}
+		}
+		
+	/*-- End bigger screens --*/
+
+	.graphsList {
+		margin: 2em 0 0;
+	}
+
+	.graphsList li {
+		margin: 0 0 3em;
+	}
+
+	.graphsList li img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+
+	.graphsList .h2 {
+		margin-bottom: 1em;
+		font-style: italic;
+		font-weight: bold;
+	}
+
+	.graphsList .legend {
+		overflow: hidden;
+		position: relative;
+		margin: 1em 0 0;
+	}
+
+	.graphsList .legend img {
+		/*width: auto;*/
+	}
+
+	.graphsList .toggle {
+		float: right;
+		font-size: 11px;
+		font-size: 1.1rem;
+	}
+
+	.graphsList .togglePanel {
+		padding: 1em 0;
+	}
+
+
+	/*-- Start bigger screens --*/
+
+	@media screen and (min-width: 40em) {
+		
+		.graphsList li {
+			width: auto;
+			margin-right: 3;
+			margin-left: 3%;
+			display: inline-block;
+			width: 43%;
+			vertical-align: top;
+		}
+	}
+		
+	/*-- End bigger screens --*/
+
+/*-- End kpiUnit --*/
