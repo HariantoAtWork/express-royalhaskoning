@@ -84,17 +84,8 @@
         }
     }
 
-
-
     .u-flex {
         @include flex-flex(1);
     }
-
-    /* small screens */
-    .respcOnlySmall {
-        // display: block;
-    }
-
-
 
 }
