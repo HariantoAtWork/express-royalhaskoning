@@ -1,26 +1,100 @@
 .compositions-vacancies-detail {
-  &__main {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-
-    @include mq-min(md) {
-      padding-left: 2rem;
-      padding-right: 2rem;
+    @mixin flex-flex($flex: 1) {
+        -webkit-box-flex: $flex;
+        /* OLD - iOS 6-, Safari 3.1-6 */
+        -moz-box-flex: $flex;
+        /* OLD - Firefox 19- */
+        -webkit-flex: $flex;
+        /* Chrome */
+        -ms-flex: $flex;
+        /* IE 10 */
+        flex: $flex;
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      margin-left: unset;
+    &__main {
+        h2 {
+            font-family: TheSansSemiBold-Plain;
+        }
     }
-  }
 
-  &__aside {
-  }
+    &__aside {}
 
-  &__footer {
-  }
+    &__footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        background-color: white;
+        border-top: 1px solid #CADDE1;
+
+        padding: 26px 35px;
+
+
+        &.hidden {
+            display: none !important;
+        }
+
+        .button.details {
+            border: 1px solid #00577E;
+            background-color: white;
+            color: #00577e;
+        }
+
+        .button {
+            &:not(:last-child) {
+                margin-right: 15px;
+            }
+        }
+
+
+    }
+
+    .u-box {
+        display: -webkit-box;
+        /* OLD - iOS 6-, Safari 3.1-6 */
+        display: -moz-box;
+        /* OLD - Firefox 19- (buggy but mostly works) */
+        display: -ms-flexbox;
+        /* TWEENER - IE 10 */
+        display: -webkit-flex;
+        /* NEW - Chrome */
+        display: flex;
+        /* NEW, Spec - Opera 12.1, Firefox 20+ */
+
+        &.respcOnlySmall {
+            display: none;
+        }
+
+        &.respcOnlyLarge {
+            clear: both;
+            display: flex;
+        }
+
+        @media screen and (max-width: $sm-max) {
+
+            /* small screens */
+            &.respcOnlySmall {
+                display: flex;
+            }
+
+            &.respcOnlyLarge {
+                display: none;
+            }
+        }
+    }
+
+
+
+    .u-flex {
+        @include flex-flex(1);
+    }
+
+    /* small screens */
+    .respcOnlySmall {
+        // display: block;
+    }
+
+
+
 }
