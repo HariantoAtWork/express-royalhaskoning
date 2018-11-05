@@ -169,7 +169,7 @@
             </div>
         </div>
     </aside>
-    <footer class="compositions-vacancies-detail__footer u-box respcOnlySmall">
+    <footer class="compositions-vacancies-detail__footer u-box respcOnlySmall js-footer-el">
         <a href="#details" class="cta button details u-flex js-btn-details"><span class="icon-down"></span>&nbsp;Send
             Details</a>
         <a href="https://www.royalhaskoningdhv.com/en-gb/popup/jaap-veerman/1976" class="cta button primary u-flex">Apply</a>
@@ -200,18 +200,16 @@
 
             var isInViewport = function (el) {
                 var height = Math.max(el.clientHeight, el.offsetHeight, el.scrollHeight, el.getBoundingClientRect().height)
-                var elementTop = el.getBoundingClientRect().top
-                var elementBottom = elementTop + height
+                var elementTop = el.getBoundingClientRect().top;
+                var elementBottom = elementTop + el.offsetHeight;
                 var viewportTop = windowScrollTop()
-                var viewportBottom = viewportTop + window.outerHeight
-                console.log('isInViewport', elementTop, elementBottom, viewportTop, viewportBottom)
+                var viewportBottom = viewportTop + Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
                 return elementBottom > viewportTop && elementTop < viewportBottom;
             }
 
             var elementIsInViewportEvent = function (event) {
                 var footerEl = document.querySelector('.js-footer-el')
                 var applyEl = document.querySelector('.js-apply-el')
-                console.log(isInViewport(applyEl), applyEl.offsetTop)
                 if (isInViewport(applyEl)) {
                     // remove el
                     footerEl.classList.add('hidden')
