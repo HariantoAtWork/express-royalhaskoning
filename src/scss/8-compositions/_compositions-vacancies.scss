@@ -6,7 +6,6 @@
     }
 
     &__main {
-        background-color: rgba(blue, 0.1);
         @include flex-flex(1);
     }
 
@@ -51,7 +50,111 @@
         }
     }
 
-    .u-flex {
-        @include flex-flex(1);
+    .results-item {
+        &:not(:last-child) {
+            &:after {
+                content: '';
+                display: block;
+                margin-left: 4rem;
+                margin-right: 4rem;
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+                border-bottom: 1px solid #cadde1;
+            }
+        }
+
+        &.rlUnit {
+            float: unset;
+        }
+    }
+
+    .results-title {
+        height: 31px;
+        font-family: TheSansSemiBold-Plain;
+        font-size: 26px;
+        font-weight: bold;
+        color: #00577e;
+        margin-bottom: 5rem;
+    }
+
+    .results-table {
+
+        &-header,
+        &-body {
+            margin-left: 4rem;
+            margin-right: 4rem;
+
+            @media screen and (min-width: 960px) {
+                @include flex;
+            }
+
+            .data {
+                @media screen and (min-width: 960px) {
+                    @include flex-flex(1);
+
+                    &.data-vacancy {
+                        @include flex-flex(2);
+                    }
+                }
+
+
+
+                &.data-category,
+                &.data-discipline {
+                    display: none;
+
+                    @media screen and (min-width: 960px) {
+                        display: inline-block;
+                    }
+                }
+
+                @media screen and (min-width: 960px) {}
+            }
+        }
+
+        &-header {
+            display: none;
+
+            @media screen and (min-width: 960px) {
+                @include flex;
+            }
+
+            .data {
+                font-family: TheSansSemiBold-Plain;
+                font-size: 20px;
+                font-weight: bold;
+                color: #a6c101;
+                text-transform: uppercase;
+            }
+        }
+
+        &-body {
+            @media screen and (min-width: 960px) {
+                @include flex;
+            }
+
+            .data {
+                .title {
+                    margin-top: 0;
+                    margin-left: 0;
+                    font-family: TheSansSemiBold-Plain;
+                    text-transform: unset;
+                    font-size: 20px;
+                    font-weight: bold;
+                    line-height: 1.3;
+                    color: #00577e;
+                }
+
+                &-country {
+                    .fontIcon {
+                        margin-right: 1.5rem;
+
+                        @media screen and (min-width: 960px) {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
