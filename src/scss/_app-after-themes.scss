@@ -17,6 +17,7 @@
 // 2. Tools: Default mixins, functions
 @import "2-tools/tools.mixins";
 @import "2-tools/tools.extends";
+@import "2-tools/tools.flex";
 
 // 3. Generic: Ground-zero styles (normalize, box-sizing)
 // @import "libs/libs-css";//this one has to have extension .scss to be imported when compiling
@@ -33,6 +34,8 @@
 // @import "5-objects/objects.media-block";
 // @import "5-objects/objects.list-inline";
 // @import "5-objects/objects.iframe";
+@import "5-objects/objects.u-box";
+@import "5-objects/objects.u-flex";
 
 
 // @import "global-layout";
