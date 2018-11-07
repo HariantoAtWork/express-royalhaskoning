@@ -235,6 +235,10 @@
 
         @media screen and (min-width: 960px) {
             display: none;
+
+            &-flex {
+                display: none;
+            }
         }
     }
 
