@@ -23,6 +23,13 @@ router.get('/vacancies-detail', function (req, res, next) {
   })
 })
 
+router.get('/projects', function (req, res, next) {
+  res.render('projects', {
+    layout: 'layout-royalhaskoning',
+    title: 'Vacancies Detail'
+  })
+})
+
 router.get('/other', function (req, res, next) {
   res.render('other', {
     layout: 'layout-empty',
