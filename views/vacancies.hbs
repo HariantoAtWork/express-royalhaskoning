@@ -1,12 +1,15 @@
 <section class="compositions-vacancies o-content-width">
     <main class="compositions-vacancies__main mainCol u-flex">
         <!-- title -->
+        <h2 class="title responsive--only-mobile">Find vacancies</h2>
         <!-- /title -->
 
-        <form>
-            <input type="text">
-            <button>Zoek</button>
+        <!-- search -->
+        <form class="form-search responsive--only-mobile-flex u-box--column">
+            <input type="text" class="form-search__field u-flex" placeholder="Term">
+            <button class="form-search__button cta button primary">Search</button>
         </form>
+        <!-- /search -->
 
         {{> vacancies_result}}
     </main>
@@ -15,12 +18,15 @@
             FILTER HEADER
         </header>
         <main class="compositions-vacancies__aside__main u-flex u-overflow-y">
+            <h2 class="title">
+                Find vacancies
+            </h2>
             {{> vacancies_filter}}
         </main>
         <footer class="compositions-vacancies__aside__footer u-box">
             <a href="#details" class="cta button details u-flex js-btn-details"><span class="icon-down"></span>&nbsp;Send
                 Details</a>
-            <a href="https://www.royalhaskoningdhv.com/en-gb/popup/jaap-veerman/1976" class="cta button primary u-flex">Apply</a>
+            <a class="cta button primary u-flex">Apply</a>
         </footer>
     </aside>
 </section>

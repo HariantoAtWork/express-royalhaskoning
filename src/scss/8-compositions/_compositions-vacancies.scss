@@ -7,6 +7,32 @@
 
     &__main {
         @include flex-flex(1);
+
+        padding-top: 4rem;
+
+        @media screen and (min-width: 960px) {
+            padding-top: 0;
+        }
+
+
+        h2 {
+            height: 31px;
+            font-family: TheSansSemiBold-Plain;
+            font-size: 26px;
+            font-weight: bold;
+            color: #00577e;
+            letter-spacing: unset;
+            margin-top: 2.5rem;
+
+            &:after {
+                display: none;
+            }
+        }
+
+        .form-search {
+            margin-left: 4rem;
+            margin-right: 4rem;
+        }
     }
 
     &__aside {
@@ -15,6 +41,30 @@
             background-color: #e5edf0;
             max-width: 320px;
         }
+
+        h2 {
+            height: 31px;
+            font-family: TheSansSemiBold-Plain;
+            font-size: 26px;
+            font-weight: bold;
+            color: #00577e;
+            letter-spacing: unset;
+            margin-top: 2.5rem;
+
+            &:after {
+                display: none;
+            }
+        }
+
+        h3 {
+            font-family: TheSansSemiBold-Plain;
+        }
+
+        .clearAll {
+            font-family: TheSansSemiBold-Plain;
+            text-transform: unset;
+            color: #0086a9;
+        }
     }
 
     &__footer {
@@ -22,6 +72,13 @@
             &:not(:last-child) {
                 margin-right: 15px;
             }
+        }
+    }
+
+    .form-search {
+        &__field {
+            @include flex-flex(1);
+            width: unset;
         }
     }
 
@@ -47,6 +104,17 @@
             &.respcOnlyLarge {
                 display: none;
             }
+        }
+    }
+
+    .more {
+
+        .showmore,
+        .showless {
+            font-family: TheSansSemiBold-Plain;
+            font-weight: bold;
+            color: #0086a9;
+            text-transform: initial;
         }
     }
 
@@ -157,4 +225,29 @@
             }
         }
     }
+
+    .responsive--only-mobile {
+        display: block;
+
+        &-flex {
+            @include flex;
+        }
+
+        @media screen and (min-width: 960px) {
+            display: none;
+        }
+    }
+
+    .responsive--only-desktop {
+        display: none;
+
+        @media screen and (min-width: 960px) {
+            display: block;
+
+            &-flex {
+                @include flex;
+            }
+        }
+    }
+
 }
