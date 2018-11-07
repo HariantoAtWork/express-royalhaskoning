@@ -17,7 +17,7 @@
 
         h2 {
             height: 31px;
-            font-family: TheSansSemiBold-Plain;
+            font-family: $font-family-brand-bold;
             font-size: 26px;
             font-weight: bold;
             color: #00577e;
@@ -44,7 +44,7 @@
 
         h2 {
             height: 31px;
-            font-family: TheSansSemiBold-Plain;
+            font-family: $font-family-brand-bold;
             font-size: 26px;
             font-weight: bold;
             color: #00577e;
@@ -57,11 +57,11 @@
         }
 
         h3 {
-            font-family: TheSansSemiBold-Plain;
+            font-family: $font-family-brand-bold;
         }
 
         .clearAll {
-            font-family: TheSansSemiBold-Plain;
+            font-family: $font-family-brand-bold;
             text-transform: unset;
             color: #0086a9;
         }
@@ -111,7 +111,7 @@
 
         .showmore,
         .showless {
-            font-family: TheSansSemiBold-Plain;
+            font-family: $font-family-brand-bold;
             font-weight: bold;
             color: #0086a9;
             text-transform: initial;
@@ -138,7 +138,7 @@
 
     .results-title {
         height: 31px;
-        font-family: TheSansSemiBold-Plain;
+        font-family: $font-family-brand-bold;
         font-size: 26px;
         font-weight: bold;
         color: #00577e;
@@ -188,7 +188,7 @@
             }
 
             .data {
-                font-family: TheSansSemiBold-Plain;
+                font-family: $font-family-brand-bold;
                 font-size: 20px;
                 font-weight: bold;
                 color: #a6c101;
@@ -205,7 +205,7 @@
                 .title {
                     margin-top: 0;
                     margin-left: 0;
-                    font-family: TheSansSemiBold-Plain;
+                    font-family: $font-family-brand-bold;
                     text-transform: unset;
                     font-size: 20px;
                     font-weight: bold;
